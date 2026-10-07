@@ -7,34 +7,41 @@
     <link rel="stylesheet" href="../css/sanpham.css">
     <!-- FontAwesome cho icon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header class="header">
-        <div class="container header-container">
-            <h1>Sàn Trao Đổi Đồ Cũ</h1>
-            
-            <!-- Menu cho Desktop -->
-            <nav class="nav-menu">
-                <ul>
-                    <li><a href="#">Trang chủ</a></li>
-                    <li><a href="#" class="active">Danh mục sản phẩm</a></li>
-                    <li><a href="#">Đăng tin</a></li>
-                </ul>
-            </nav>
-            
-            <!-- Khu vực nút chức năng -->
-            <div class="header-actions" style="display: flex; align-items: center; gap: 15px;">
-                <!-- Nút chuyển đổi Dark/Light Mode -->
-                <button id="theme-toggle" class="theme-toggle" aria-label="Đổi giao diện">
-                    <i class="fas fa-moon"></i>
-                </button>
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="trangchusantraodoi.html" aria-label="Semper — về trang chủ">
+          <span class="brand-mark" aria-hidden="true">S</span>
+          <span>Semper<span class="brand-period">.</span></span>
+        </a>
 
-                <!-- Icon Hamburger cho Mobile -->
-                <div class="hamburger-menu">
-                    <i class="fas fa-bars"></i>
-                </div>
-            </div>
+        <nav class="desktop-nav" aria-label="Điều hướng chính">
+          <a class="nav-link" href="trangchusantraodoi.html">Trang chủ</a>
+          <a class="nav-link active" href="sanpham.html">Danh mục sản phẩm</a>
+        </nav>
+
+        <div class="header-actions">
+          <a class="sell-link" href="#dang-tin">Đăng tin miễn phí</a>
+          <button class="icon-button theme-toggle" id="theme-toggle" type="button" aria-label="Chuyển sang giao diện tối" title="Chuyển sang giao diện tối">
+            <svg class="sun-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="4"></circle>
+              <path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"></path>
+            </svg>
+            <svg class="moon-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M20.9 13A8.5 8.5 0 0 1 11 3.1 8.5 8.5 0 1 0 20.9 13Z"></path>
+            </svg>
+          </button>
+          <button class="icon-button notification-button" type="button" aria-label="Thông báo">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4" />
+            </svg>
+            <span class="notification-dot" aria-hidden="true"></span>
+          </button>
+          <button class="avatar-button" type="button" aria-label="Tài khoản của bạn">L</button>
         </div>
+      </div>
     </header>
 
     <main class="main-content container">
@@ -92,7 +99,7 @@
             <div class="product-card">
                 <div class="product-image">
                     <span class="badge badge-like-new">Like New</span>
-                    <img src="https://via.placeholder.com/300x200/e0e7ff/4f46e5?text=MacBook+Air" alt="MacBook Air M1">
+                    
                 </div>
                 <div class="product-info">
                     <h3 class="product-title">MacBook Air M1 2020 8GB/256GB</h3>
@@ -106,7 +113,7 @@
             <div class="product-card">
                 <div class="product-image">
                     <span class="badge badge-good">Good</span>
-                    <img src="https://via.placeholder.com/300x200/f3e8ff/9333ea?text=iPhone+13" alt="iPhone 13">
+                 
                 </div>
                 <div class="product-info">
                     <h3 class="product-title">Điện thoại iPhone 13 128GB Quốc Tế</h3>
@@ -120,7 +127,7 @@
             <div class="product-card">
                 <div class="product-image">
                     <span class="badge badge-fair">Fair</span>
-                    <img src="https://via.placeholder.com/300x200/ffedd5/ea580c?text=Ban+Phim+Co" alt="Bàn phím cơ">
+                   
                 </div>
                 <div class="product-info">
                     <h3 class="product-title">Bàn phím cơ không dây Keychron K2 V2</h3>
@@ -134,7 +141,7 @@
             <div class="product-card">
                 <div class="product-image">
                     <span class="badge badge-like-new">Like New</span>
-                    <img src="https://via.placeholder.com/300x200/dcfce7/16a34a?text=Sony+A6000" alt="Máy ảnh Sony">
+                   
                 </div>
                 <div class="product-info">
                     <h3 class="product-title">Máy ảnh Mirrorless Sony A6000 + Kit</h3>
@@ -148,42 +155,35 @@
     </main>
     <script>
         const themeToggle = document.getElementById('theme-toggle');
-        const icon = themeToggle.querySelector('i');
-        const currentTheme = localStorage.getItem('theme') || 'light';
-
-        // Áp dụng theme lưu từ trước
-        if (currentTheme === 'dark') {
-            document.documentElement.setAttribute('data-theme', 'dark');
-            icon.classList.replace('fa-moon', 'fa-sun');
+        
+        function applyTheme(theme) {
+            const isDark = theme === "dark";
+            document.documentElement.setAttribute('data-theme', theme);
+            if(themeToggle) {
+                themeToggle.setAttribute("aria-pressed", String(isDark));
+                themeToggle.setAttribute(
+                    "aria-label",
+                    isDark ? "Chuyển sang giao diện sáng" : "Chuyển sang giao diện tối",
+                );
+                themeToggle.title = isDark ? "Chuyển sang giao diện sáng" : "Chuyển sang giao diện tối";
+            }
         }
 
-        // Bắt sự kiện click để chuyển đổi
-        themeToggle.addEventListener('click', () => {
-            const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-            
-            if (isDark) {
-                document.documentElement.setAttribute('data-theme', 'light');
-                localStorage.setItem('theme', 'light');
-                icon.classList.replace('fa-sun', 'fa-moon');
-            } else {
-                document.documentElement.setAttribute('data-theme', 'dark');
-                localStorage.setItem('theme', 'dark');
-                icon.classList.replace('fa-moon', 'fa-sun');
-            }
-        });
+        const savedTheme = localStorage.getItem("semper-theme");
+        const initialTheme =
+            savedTheme === "light" || savedTheme === "dark"
+                ? savedTheme
+                : window.matchMedia("(prefers-color-scheme: dark)").matches
+                ? "dark"
+                : "light";
 
-        // 1. Mobile Hamburger Menu Toggle
-        const hamburgerMenu = document.querySelector('.hamburger-menu');
-        const navMenu = document.querySelector('.nav-menu');
-        if (hamburgerMenu && navMenu) {
-            hamburgerMenu.addEventListener('click', () => {
-                navMenu.classList.toggle('active');
-                const icon = hamburgerMenu.querySelector('i');
-                if (navMenu.classList.contains('active')) {
-                    icon.classList.replace('fa-bars', 'fa-times');
-                } else {
-                    icon.classList.replace('fa-times', 'fa-bars');
-                }
+        applyTheme(initialTheme);
+
+        if(themeToggle) {
+            themeToggle.addEventListener("click", () => {
+                const nextTheme = document.documentElement.getAttribute('data-theme') === "dark" ? "light" : "dark";
+                applyTheme(nextTheme);
+                localStorage.setItem("semper-theme", nextTheme);
             });
         }
 
