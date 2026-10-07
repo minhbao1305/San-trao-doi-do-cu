@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi tiết sản phẩm - Sàn Đồ Cũ</title>
+    <!-- Tái sử dụng CSS chung -->
+    <link rel="stylesheet" href="../css/sanpham.css">
+    <!-- CSS riêng cho trang chi tiết -->
+    <link rel="stylesheet" href="../css/ctsp.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header giống trang sản phẩm -->
+    <header class="header">
+        <div class="container header-container">
+            <h1>Sàn Trao Đổi Đồ Cũ</h1>
+            
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="#">Trang chủ</a></li>
+                    <li><a href="sanpham.html" class="active">Danh mục sản phẩm</a></li>
+                    <li><a href="#">Đăng tin</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header-actions" style="display: flex; align-items: center; gap: 15px;">
+                <button id="theme-toggle" class="theme-toggle" aria-label="Đổi giao diện">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <div class="hamburger-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container product-detail-main">
+        <!-- Breadcrumb (Đường dẫn) -->
+        <div class="breadcrumb">
+            <a href="sanpham.html">Danh mục sản phẩm</a> > <a href="#">Điện thoại</a> > <span>iPhone 13 128GB Quốc Tế</span>
+        </div>
+
+        <!-- Khối thông tin chính: Ảnh & Giá -->
+        <div class="product-detail-layout">
+            
+            <!-- Cột trái: Thư viện ảnh -->
+            <div class="product-gallery">
+                <div class="main-image">
+                    <span class="badge badge-good" style="box-shadow: none;">Good</span>
+                    <img src="https://via.placeholder.com/600x400/f3e8ff/9333ea?text=iPhone+13" alt="Ảnh chính iPhone 13">
+                </div>
+                <div class="thumbnail-list">
+                    <img src="https://via.placeholder.com/600x400/f3e8ff/9333ea?text=iPhone+13" class="thumb active" alt="Thumb 1">
+                    <img src="https://via.placeholder.com/600x400/e0e7ff/4f46e5?text=Mat+Sau" class="thumb" alt="Thumb 2">
+                    <img src="https://via.placeholder.com/600x400/dcfce7/16a34a?text=Phu+Kien" class="thumb" alt="Thumb 3">
+                </div>
+            </div>
+
+            <!-- Cột phải: Thông tin & Nút Mua -->
+            <div class="product-info-detail">
+                <h2 class="product-title-large">Điện thoại iPhone 13 128GB Quốc Tế</h2>
+                <div class="product-price-large">11.200.000 đ</div>
+                
+                <!-- Thông tin người bán -->
+                <div class="seller-info">
+                    <img src="https://via.placeholder.com/50x50/cccccc/ffffff?text=User" alt="Avatar" class="seller-avatar">
+                    <div class="seller-details">
+                        <div class="seller-name">Nguyễn Văn A <i class="fas fa-check-circle" style="color: #10b981; font-size: 0.9rem;"></i></div>
+                        <div class="seller-rating"><i class="fas fa-star"></i> 4.8 (12 đánh giá) - Hoạt động 2 giờ trước</div>
+                    </div>
+                </div>
+
+                <!-- Thông số tóm tắt -->
+                <div class="product-specs">
+                    <ul>
+                        <li><strong>Tình trạng:</strong> Ngoại hình 98%, pin 88%</li>
+                        <li><strong>Bảo hành:</strong> Bao test 7 ngày</li>
+                        <li><strong>Khu vực:</strong> Quận Cầu Giấy, Hà Nội</li>
+                    </ul>
+                </div>
+
+                <!-- Nút hành động -->
+                <div class="action-buttons">
+                    <button class="btn-primary-large"><i class="fas fa-comments"></i> Chat với người bán</button>
+                    <button class="btn-secondary-large"><i class="fas fa-heart"></i> Lưu tin</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Khối Mô tả chi tiết dài -->
+        <div class="product-description-full">
+            <h3>Mô tả chi tiết</h3>
+            <p>Do lên đời nên mình cần pass lại chiếc iPhone 13 bản 128GB Quốc Tế màu Tím.</p>
+            <p>
+                - Máy nguyên zin, chưa từng qua sửa chữa, áp suất nhảy ầm ầm.<br>
+                - Ngoại hình: xước lông mèo cực nhẹ ở viền thép do dùng ốp, không cấn móp, mặt kính trước sau đẹp keng.<br>
+                - Pin: 88% vẫn dùng thoải mái 1 ngày.<br>
+                - Phụ kiện đi kèm: Cáp sạc zin theo máy, tặng kèm 3 ốp lưng mua trên Shopee.
+            </p>
+            <p>Giao dịch trực tiếp tại nhà riêng (Khu vực Cầu Giấy), không hẹn ngoài quán cafe. Có fix nhẹ tiền xăng xe cho anh em nhiệt tình qua xem máy.</p>
+        </div>
+    </main>
+
+    <!-- Script Theme Toggle (Tái sử dụng) -->
+    <script>
+        const themeToggle = document.getElementById('theme-toggle');
+        const icon = themeToggle.querySelector('i');
+        const currentTheme = localStorage.getItem('theme') || 'light';
+
+        if (currentTheme === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            icon.classList.replace('fa-moon', 'fa-sun');
+        }
+
+        themeToggle.addEventListener('click', () => {
+            const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+            if (isDark) {
+                document.documentElement.setAttribute('data-theme', 'light');
+                localStorage.setItem('theme', 'light');
+                icon.classList.replace('fa-sun', 'fa-moon');
+            } else {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+                icon.classList.replace('fa-moon', 'fa-sun');
+            }
+        });
+
+        // Mobile Hamburger Menu Toggle
+        const hamburgerMenu = document.querySelector('.hamburger-menu');
+        const navMenu = document.querySelector('.nav-menu');
+        if (hamburgerMenu && navMenu) {
+            hamburgerMenu.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+                const icon = hamburgerMenu.querySelector('i');
+                if (navMenu.classList.contains('active')) {
+                    icon.classList.replace('fa-bars', 'fa-times');
+                } else {
+                    icon.classList.replace('fa-times', 'fa-bars');
+                }
+            });
+        }
+    </script>
+</body>
+</html>

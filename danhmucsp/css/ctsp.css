@@ -1,0 +1,266 @@
+/* ==========================================================
+   CSS Riêng cho Trang Chi tiết Sản phẩm (ctsp.html)
+   ========================================================== */
+
+/* Spacing cho khối Main */
+.product-detail-main {
+    padding-bottom: 60px;
+}
+
+/* Đường dẫn (Breadcrumb) */
+.breadcrumb {
+    margin-bottom: 25px;
+    font-size: 0.95rem;
+    color: var(--text-muted);
+}
+
+.breadcrumb a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: text-decoration 0.2s;
+}
+
+.breadcrumb a:hover {
+    text-decoration: underline;
+}
+
+.breadcrumb span {
+    color: var(--text-main);
+    font-weight: 500;
+}
+
+/* Layout Chính (Chia 2 cột) */
+.product-detail-layout {
+    display: flex;
+    gap: 40px;
+    background-color: var(--bg-card);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px var(--shadow-color);
+    border: 1px solid var(--border-color);
+    margin-bottom: 40px;
+}
+
+/* ----------------------------------
+   Cột Trái: Thư viện Ảnh
+   ---------------------------------- */
+.product-gallery {
+    flex: 1;
+    min-width: 0; /* Ngăn vỡ flexbox khi ảnh to */
+}
+
+.main-image {
+    position: relative;
+    width: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 15px;
+    background-color: var(--bg-main);
+}
+
+.main-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+}
+
+.thumbnail-list {
+    display: flex;
+    gap: 15px;
+    overflow-x: auto;
+    padding-bottom: 5px; /* Để không bị lẹm scrollbar */
+}
+
+.thumb {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    opacity: 0.6;
+    transition: all 0.2s;
+}
+
+.thumb:hover, .thumb.active {
+    opacity: 1;
+    border-color: var(--primary-color);
+}
+
+/* ----------------------------------
+   Cột Phải: Thông tin chi tiết
+   ---------------------------------- */
+.product-info-detail {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-title-large {
+    font-size: 1.8rem;
+    color: var(--text-main);
+    margin-bottom: 15px;
+    line-height: 1.4;
+    font-weight: 700;
+}
+
+.product-price-large {
+    font-size: 2.2rem;
+    color: var(--primary-color);
+    font-weight: 700;
+    margin-bottom: 25px;
+}
+
+/* Khối thông tin Người Bán */
+.seller-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    background-color: var(--bg-main);
+    border-radius: 10px;
+    margin-bottom: 25px;
+    border: 1px solid var(--border-color);
+}
+
+.seller-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.seller-name {
+    font-weight: 600;
+    color: var(--text-main);
+    font-size: 1.1rem;
+}
+
+.seller-rating {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-top: 5px;
+}
+
+.seller-rating .fa-star {
+    color: #f59e0b; /* Màu vàng */
+}
+
+/* Tóm tắt thông số */
+.product-specs {
+    margin-bottom: 30px;
+}
+
+.product-specs ul {
+    list-style: none;
+    padding: 0;
+}
+
+.product-specs li {
+    padding: 12px 0;
+    border-bottom: 1px dashed var(--border-color);
+    color: var(--text-main);
+    font-size: 1.05rem;
+}
+
+.product-specs li strong {
+    display: inline-block;
+    width: 110px;
+    color: var(--text-muted);
+}
+
+/* Nút bấm lớn */
+.action-buttons {
+    display: flex;
+    gap: 15px;
+    margin-top: auto; /* Đẩy xuống sát đáy */
+}
+
+.btn-primary-large, .btn-secondary-large {
+    padding: 16px;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.2s;
+    border: none;
+}
+
+.btn-primary-large {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.btn-primary-large:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(139, 92, 246, 0.3); /* Phù hợp với màu Tím 2026 */
+}
+
+.btn-secondary-large {
+    background-color: transparent;
+    color: var(--text-main);
+    border: 2px solid var(--border-color);
+}
+
+.btn-secondary-large:hover {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+/* ----------------------------------
+   Khối Mô Tả Chi Tiết (Bên dưới)
+   ---------------------------------- */
+.product-description-full {
+    background-color: var(--bg-card);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px var(--shadow-color);
+    border: 1px solid var(--border-color);
+}
+
+.product-description-full h3 {
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+    color: var(--text-main);
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--primary-color); /* Nổi bật phần tiêu đề mô tả */
+    display: inline-block;
+}
+
+.product-description-full p {
+    margin-bottom: 15px;
+    color: var(--text-main);
+    line-height: 1.8;
+    font-size: 1.05rem;
+}
+
+/* ==========================================================
+   Responsive cho Trang Chi tiết
+   ========================================================== */
+@media (max-width: 768px) {
+    .product-detail-layout {
+        flex-direction: column;
+        padding: 20px;
+        gap: 25px;
+    }
+    
+    .action-buttons {
+        flex-direction: column;
+    }
+    
+    .product-title-large {
+        font-size: 1.5rem;
+    }
+    
+    .product-price-large {
+        font-size: 1.8rem;
+    }
+}
