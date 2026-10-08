@@ -263,3 +263,44 @@
         flex-direction: column;
     }
 }
+
+/* ==========================================================
+   Logic d?i ?nh Gallery khng c?n JavaScript
+   ========================================================== */
+.main-image {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+}
+
+.main-image .gallery-img {
+    position: absolute;
+    top: 0; 
+    left: 0;
+    width: 100%; 
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.gallery-radio {
+    display: none;
+}
+
+/* B?t ?nh L?N khi Radio tuong ?ng du?c tick */
+input[id$="-img1"]:checked ~ .main-image .img1,
+input[id$="-img2"]:checked ~ .main-image .img2,
+input[id$="-img3"]:checked ~ .main-image .img3 {
+    opacity: 1;
+    z-index: 2;
+}
+
+/* T vi?n ?nh NH? (Thumbnail) khi Radio tuong ?ng du?c tick */
+input[id$="-img1"]:checked ~ .thumbnail-list label[for$="-img1"] .thumb,
+input[id$="-img2"]:checked ~ .thumbnail-list label[for$="-img2"] .thumb,
+input[id$="-img3"]:checked ~ .thumbnail-list label[for$="-img3"] .thumb {
+    opacity: 1;
+    border-color: var(--primary-color);
+}

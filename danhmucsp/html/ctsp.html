@@ -37,8 +37,8 @@
         </nav>
 
         <div class="header-actions">
-          <label for="mobile-menu-toggle" class="icon-button hamburger-menu"><i class="fas fa-bars"></i></label>
-          <a class="sell-link" href="#dang-tin">Đăng tin miễn phí</a>
+          <label for="mobile-menu-toggle" class="icon-button hamburger-menu"><div class="hamburger-lines"><span class="line line1"></span><span class="line line2"></span><span class="line line3"></span></div></label>
+          <a class="sell-link" href="dangtin.html">Đăng tin</a>
           <label for="theme-toggle-checkbox" class="icon-button theme-toggle-label" aria-label="Chuyển chế độ giao diện">
             <svg class="sun-icon" viewBox="0 0 24 24" aria-hidden="true">
               <circle cx="12" cy="12" r="4"></circle>
@@ -64,18 +64,25 @@
         <!-- SẢN PHẨM 1: IPHONE 13 -->
         <div id="iphone" class="product-view">
             <div class="breadcrumb">
-                <a href="sanpham.html">Danh mục sản phẩm</a> > <a href="#">Điện thoại</a> > <span>iPhone 13 128GB Quốc Tế</span>
+                <a href="sanpham.html">Danh mục sản phẩm</a> > <span>iPhone 13 128GB Quốc Tế</span>
             </div>
             <div class="product-detail-layout">
                 <div class="product-gallery">
+                    <!-- CSS-only Radio Buttons -->
+                    <input type="radio" name="iphone-gallery" id="iphone-img1" class="gallery-radio" checked>
+                    <input type="radio" name="iphone-gallery" id="iphone-img2" class="gallery-radio">
+                    <input type="radio" name="iphone-gallery" id="iphone-img3" class="gallery-radio">
+
                     <div class="main-image">
-                        <span class="badge badge-good" style="box-shadow: none;">Good</span>
-                        <img src="https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?auto=format&fit=crop&w=800&q=80" alt="Ảnh chính iPhone 13">
+                        <span class="badge badge-good" style="box-shadow: none; z-index: 3;">Good</span>
+                        <img class="gallery-img img1" src="https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?auto=format&fit=crop&w=800&q=80" alt="Ảnh chính iPhone 13 1">
+                        <img class="gallery-img img2" src="https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?auto=format&fit=crop&w=800&q=80" alt="Ảnh chính iPhone 13 2">
+                        <img class="gallery-img img3" src="https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?auto=format&fit=crop&w=800&q=80" alt="Ảnh chính iPhone 13 3">
                     </div>
                     <div class="thumbnail-list">
-                        <img src="https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?auto=format&fit=crop&w=200&q=80" class="thumb active" alt="Thumb 1">
-                        <img src="https://images.unsplash.com/photo-1605236453806-6ff368528d8f?auto=format&fit=crop&w=200&q=80" class="thumb" alt="Thumb 2">
-                        <img src="https://images.unsplash.com/photo-1583394838336-acd977736f90?auto=format&fit=crop&w=200&q=80" class="thumb" alt="Thumb 3">
+                        <label for="iphone-img1"><img src="https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?auto=format&fit=crop&w=200&q=80" class="thumb" alt="Thumb 1"></label>
+                        <label for="iphone-img2"><img src="https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?auto=format&fit=crop&w=200&q=80" class="thumb" alt="Thumb 2"></label>
+                        <label for="iphone-img3"><img src="https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?auto=format&fit=crop&w=200&q=80" class="thumb" alt="Thumb 3"></label>
                     </div>
                 </div>
                 <div class="product-info-detail">
@@ -117,25 +124,32 @@
         <!-- SẢN PHẨM 2: MACBOOK AIR -->
         <div id="macbook" class="product-view">
             <div class="breadcrumb">
-                <a href="sanpham.html">Danh mục sản phẩm</a> > <a href="#">Laptop & Mac</a> > <span>MacBook Air M1 2020 8GB/256GB</span>
+                <a href="sanpham.html">Danh mục sản phẩm</a> > <span>MacBook Air M1 2020 8GB/256GB</span>
             </div>
             <div class="product-detail-layout">
                 <div class="product-gallery">
+                    <!-- CSS-only Radio Buttons -->
+                    <input type="radio" name="macbook-gallery" id="macbook-img1" class="gallery-radio" checked>
+                    <input type="radio" name="macbook-gallery" id="macbook-img2" class="gallery-radio">
+                    <input type="radio" name="macbook-gallery" id="macbook-img3" class="gallery-radio">
+
                     <div class="main-image">
-                        <span class="badge badge-like-new" style="box-shadow: none;">Like New</span>
-                        <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=800&q=80" alt="Ảnh chính MacBook">
+                        <span class="badge badge-like-new" style="box-shadow: none; z-index: 3;">Like New</span>
+                        <img class="gallery-img img1" src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=800&q=80" alt="Ảnh chính MacBook 1">
+                        <img class="gallery-img img2" src="https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?auto=format&fit=crop&w=800&q=80" alt="Ảnh chính MacBook 2">
+                        <img class="gallery-img img3" src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&w=800&q=80" alt="Ảnh chính MacBook 3">
                     </div>
                     <div class="thumbnail-list">
-                        <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=200&q=80" class="thumb active" alt="Thumb 1">
-                        <img src="https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?auto=format&fit=crop&w=200&q=80" class="thumb" alt="Thumb 2">
-                        <img src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&w=200&q=80" class="thumb" alt="Thumb 3">
+                        <label for="macbook-img1"><img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=200&q=80" class="thumb" alt="Thumb 1"></label>
+                        <label for="macbook-img2"><img src="https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?auto=format&fit=crop&w=200&q=80" class="thumb" alt="Thumb 2"></label>
+                        <label for="macbook-img3"><img src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&w=200&q=80" class="thumb" alt="Thumb 3"></label>
                     </div>
                 </div>
                 <div class="product-info-detail">
                     <h2 class="product-title-large">MacBook Air M1 2020 8GB/256GB</h2>
                     <div class="product-price-large">14.500.000 đ</div>
                     <div class="seller-info">
-                        <img src="https://via.placeholder.com/50x50/cccccc/ffffff?text=U2" alt="Avatar" class="seller-avatar">
+                        <img src="https://imgcdn.stablediffusionweb.com/2024/11/1/b51f49a9-82a1-4659-905d-c8cd8643bade.jpg" alt="Avatar" class="seller-avatar">
                         <div class="seller-details">
                             <div class="seller-name">Trần Thị B <i class="fas fa-check-circle" style="color: #10b981; font-size: 0.9rem;"></i></div>
                             <div class="seller-rating"><i class="fas fa-star"></i> 5.0 (20 đánh giá) - Hoạt động 1 ngày trước</div>
@@ -170,25 +184,32 @@
         <!-- SẢN PHẨM 3: KEYCHRON -->
         <div id="keychron" class="product-view">
             <div class="breadcrumb">
-                <a href="sanpham.html">Danh mục sản phẩm</a> > <a href="#">Phụ kiện</a> > <span>Bàn phím cơ Keychron K2 V2</span>
+                <a href="sanpham.html">Danh mục sản phẩm</a> > <span>Bàn phím cơ Keychron K2 V2</span>
             </div>
             <div class="product-detail-layout">
                 <div class="product-gallery">
+                    <!-- CSS-only Radio Buttons -->
+                    <input type="radio" name="keychron-gallery" id="keychron-img1" class="gallery-radio" checked>
+                    <input type="radio" name="keychron-gallery" id="keychron-img2" class="gallery-radio">
+                    <input type="radio" name="keychron-gallery" id="keychron-img3" class="gallery-radio">
+
                     <div class="main-image">
-                        <span class="badge badge-fair" style="box-shadow: none;">Fair</span>
-                        <img src="https://images.unsplash.com/photo-1595225476474-87563907a212?auto=format&fit=crop&w=800&q=80" alt="Ảnh chính Bàn phím">
+                        <span class="badge badge-fair" style="box-shadow: none; z-index: 3;">Fair</span>
+                        <img class="gallery-img img1" src="https://images.unsplash.com/photo-1595225476474-87563907a212?auto=format&fit=crop&w=800&q=80" alt="Ảnh chính Bàn phím 1">
+                        <img class="gallery-img img2" src="https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=800&q=80" alt="Ảnh chính Bàn phím 2">
+                        <img class="gallery-img img3" src="https://images.unsplash.com/photo-1595225476474-87563907a212?auto=format&fit=crop&w=800&q=80" alt="Ảnh chính Bàn phím 3">
                     </div>
                     <div class="thumbnail-list">
-                        <img src="https://images.unsplash.com/photo-1595225476474-87563907a212?auto=format&fit=crop&w=200&q=80" class="thumb active" alt="Thumb 1">
-                        <img src="https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=200&q=80" class="thumb" alt="Thumb 2">
-                        <img src="https://images.unsplash.com/photo-1618366712010-f4ae9c647dcb?auto=format&fit=crop&w=200&q=80" class="thumb" alt="Thumb 3">
+                        <label for="keychron-img1"><img src="https://images.unsplash.com/photo-1595225476474-87563907a212?auto=format&fit=crop&w=200&q=80" class="thumb" alt="Thumb 1"></label>
+                        <label for="keychron-img2"><img src="https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=200&q=80" class="thumb" alt="Thumb 2"></label>
+                        <label for="keychron-img3"><img src="https://images.unsplash.com/photo-1595225476474-87563907a212?auto=format&fit=crop&w=200&q=80" class="thumb" alt="Thumb 3"></label>
                     </div>
                 </div>
                 <div class="product-info-detail">
                     <h2 class="product-title-large">Bàn phím cơ không dây Keychron K2 V2</h2>
                     <div class="product-price-large">950.000 đ</div>
                     <div class="seller-info">
-                        <img src="https://via.placeholder.com/50x50/cccccc/ffffff?text=U3" alt="Avatar" class="seller-avatar">
+                        <img src="https://imgcdn.stablediffusionweb.com/2024/11/1/b51f49a9-82a1-4659-905d-c8cd8643bade.jpg" alt="Avatar" class="seller-avatar">
                         <div class="seller-details">
                             <div class="seller-name">Lê Văn C </div>
                             <div class="seller-rating"><i class="fas fa-star"></i> 4.5 (8 đánh giá) - Hoạt động 30 phút trước</div>
@@ -222,25 +243,32 @@
         <!-- SẢN PHẨM 4: SONY A6000 -->
         <div id="sony" class="product-view">
             <div class="breadcrumb">
-                <a href="sanpham.html">Danh mục sản phẩm</a> > <a href="#">Điện tử</a> > <span>Máy ảnh Mirrorless Sony A6000</span>
+                <a href="sanpham.html">Danh mục sản phẩm</a> > <span>Máy ảnh Mirrorless Sony A6000</span>
             </div>
             <div class="product-detail-layout">
                 <div class="product-gallery">
+                    <!-- CSS-only Radio Buttons -->
+                    <input type="radio" name="sony-gallery" id="sony-img1" class="gallery-radio" checked>
+                    <input type="radio" name="sony-gallery" id="sony-img2" class="gallery-radio">
+                    <input type="radio" name="sony-gallery" id="sony-img3" class="gallery-radio">
+
                     <div class="main-image">
-                        <span class="badge badge-like-new" style="box-shadow: none;">Like New</span>
-                        <img src="https://images.unsplash.com/photo-1516724562728-afc824a36e84?auto=format&fit=crop&w=800&q=80" alt="Ảnh chính Sony A6000">
+                        <span class="badge badge-like-new" style="box-shadow: none; z-index: 3;">Like New</span>
+                        <img class="gallery-img img1" src="https://images.unsplash.com/photo-1516724562728-afc824a36e84?auto=format&fit=crop&w=800&q=80" alt="Ảnh chính Sony A6000 1">
+                        <img class="gallery-img img2" src="https://images.unsplash.com/photo-1516724562728-afc824a36e84?auto=format&fit=crop&w=800&q=80" alt="Ảnh chính Sony A6000 2">
+                        <img class="gallery-img img3" src="https://images.unsplash.com/photo-1581591524425-c7e0978865fc?auto=format&fit=crop&w=800&q=80" alt="Ảnh chính Sony A6000 3">
                     </div>
                     <div class="thumbnail-list">
-                        <img src="https://images.unsplash.com/photo-1516724562728-afc824a36e84?auto=format&fit=crop&w=200&q=80" class="thumb active" alt="Thumb 1">
-                        <img src="https://images.unsplash.com/photo-1502982720700-baf97d4251a6?auto=format&fit=crop&w=200&q=80" class="thumb" alt="Thumb 2">
-                        <img src="https://images.unsplash.com/photo-1581591524425-c7e0978865fc?auto=format&fit=crop&w=200&q=80" class="thumb" alt="Thumb 3">
+                        <label for="sony-img1"><img src="https://images.unsplash.com/photo-1516724562728-afc824a36e84?auto=format&fit=crop&w=200&q=80" class="thumb" alt="Thumb 1"></label>
+                        <label for="sony-img2"><img src="https://images.unsplash.com/photo-1516724562728-afc824a36e84?auto=format&fit=crop&w=200&q=80" class="thumb" alt="Thumb 2"></label>
+                        <label for="sony-img3"><img src="https://images.unsplash.com/photo-1581591524425-c7e0978865fc?auto=format&fit=crop&w=200&q=80" class="thumb" alt="Thumb 3"></label>
                     </div>
                 </div>
                 <div class="product-info-detail">
                     <h2 class="product-title-large">Máy ảnh Mirrorless Sony A6000 + Kit</h2>
                     <div class="product-price-large">7.800.000 đ</div>
                     <div class="seller-info">
-                        <img src="https://via.placeholder.com/50x50/cccccc/ffffff?text=U4" alt="Avatar" class="seller-avatar">
+                        <img src="https://imgcdn.stablediffusionweb.com/2024/11/1/b51f49a9-82a1-4659-905d-c8cd8643bade.jpg" alt="Avatar" class="seller-avatar">
                         <div class="seller-details">
                             <div class="seller-name">Phạm D <i class="fas fa-check-circle" style="color: #10b981; font-size: 0.9rem;"></i></div>
                             <div class="seller-rating"><i class="fas fa-star"></i> 4.9 (35 đánh giá) - Hoạt động 10 phút trước</div>
@@ -275,5 +303,9 @@
     </main>
 </body>
 </html>
+
+
+
+
 
 

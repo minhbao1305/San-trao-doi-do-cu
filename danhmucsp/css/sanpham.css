@@ -67,6 +67,11 @@ body:has(#theme-toggle-checkbox:checked) {
     box-sizing: border-box;
 }
 
+html {
+    scroll-padding-top: 100px;
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: 'DM Sans', sans-serif;
     background-color: var(--bg-main);
@@ -97,26 +102,26 @@ body:has(#theme-toggle-checkbox:checked) .nav-link:hover, body:has(#theme-toggle
 body:has(#theme-toggle-checkbox:checked) .nav-link.active::after { background: var(--primary-color); }
 .header-actions { display: flex; align-items: center; gap: 20px; }
 .icon-button.hamburger-menu { display: none; }
-.sell-link { color: var(--primary-color); font-size: var(--fs-sm); font-weight: 700; text-decoration: none; }
+.sell-link { color: var(--primary-color); font-size: var(--fs-sm); font-weight: 700; text-decoration: none; display: inline-block; animation: pulse 2s infinite ease-in-out; }
 .icon-button, .avatar-button { position: relative; display: grid; width: 37px; height: 37px; place-items: center; border: 0; border-radius: 50%; background: transparent; cursor: pointer; color: var(--text-main); }
 .icon-button svg { width: 20px; fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.6; }
 .theme-toggle { color: var(--primary-color); }
 .theme-toggle .moon-icon, .dark-theme .theme-toggle .sun-icon,
-body:has(#theme-toggle-checkbox:checked) .theme-toggle .sun-icon { display: none; }
+body:has(#theme-toggle-checkbox:checked) .theme-toggle .sun-icon { display: none !important; }
 .dark-theme .theme-toggle .moon-icon,
-body:has(#theme-toggle-checkbox:checked) .theme-toggle .moon-icon { display: block; }
+body:has(#theme-toggle-checkbox:checked) .theme-toggle .moon-icon { display: block !important; }
 
 /* If using checkbox as toggle button directly without JS, can still use :has */
-body:has(#theme-toggle-checkbox:checked) .sun-icon { display: none; }
+body:has(#theme-toggle-checkbox:checked) .sun-icon { display: none !important; }
 body:has(#theme-toggle-checkbox:checked) .moon-icon { 
-    display: block; 
+    display: block !important; 
     color: #fbbf24; /* Make moon icon yellow/bright */
     fill: #fbbf24; 
     transition: color 0.2s, fill 0.2s;
 }
-body.dark-theme .sun-icon { display: none; }
+body.dark-theme .sun-icon { display: none !important; }
 body.dark-theme .moon-icon { 
-    display: block; 
+    display: block !important; 
     color: #fbbf24; 
     fill: #fbbf24; 
     transition: color 0.2s, fill 0.2s;
@@ -442,25 +447,27 @@ body.dark-theme .theme-toggle-label:hover .moon-icon {
     display: none;
 }
 
+/* Mac dinh la dong (Closed by default) */
 .filter-content {
-    max-height: 1500px; /* Ð? l?n d? ch?a b? l?c */
+    max-height: 0;
+    opacity: 0;
+    margin-top: 0;
+    padding-top: 0;
+    border-top: 0 dashed transparent;
     overflow: hidden;
-    transition: max-height 0.4s ease, opacity 0.4s ease, margin-top 0.4s ease, padding-top 0.4s ease;
+    transition: max-height 0.4s ease, opacity 0.4s ease, margin-top 0.4s ease, padding-top 0.4s ease, border-top 0.4s ease;
+}
+
+/* Khi checkbox duoc tick => Mo ra */
+#mobile-filter-checkbox:checked ~ .filter-content {
+    max-height: 1500px; /* Ð? l?n d? ch?a b? l?c */
     opacity: 1;
     margin-top: 15px;
     padding-top: 15px;
     border-top: 1px dashed var(--border-color);
 }
 
-/* Khi checkbox du?c tch (m?c d?nh l unchecked t?c l Dang m?), ph?n b? l?c s? dng l?i */
-#mobile-filter-checkbox:checked ~ .filter-content {
-    max-height: 0;
-    opacity: 0;
-    margin-top: 0;
-    padding-top: 0;
-    border-top: 0 dashed transparent;
-}
-
+/* Mui ten quay nguoc lai khi mo */
 #mobile-filter-checkbox:checked ~ .mobile-filter-header .toggle-icon {
     transform: rotate(180deg);
 }
@@ -512,4 +519,74 @@ body.dark-theme .theme-toggle-label:hover .moon-icon {
         width: 100%; /* Trải rộng full màn hình */
         padding: 15px 20px;
     }
+}
+
+
+
+/* ==========================================================
+   Loading Spinner
+   ========================================================== */
+.spinner {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid var(--border-color); /* Màu viền cơ bản */
+    border-top-color: var(--primary-color); /* Màu khác biệt ở phần trên */
+    border-radius: 50%; /* Bo tròn thành hình tròn */
+    animation: spin 1s linear infinite; /* Xoay 360 độ vô hạn */
+    vertical-align: middle;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* ==========================================================
+   Pulse Animation cho nút "Đăng tin"
+   ========================================================== */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.08);
+        opacity: 0.9;
+        text-shadow: 0 0 8px color-mix(in srgb, var(--primary-color) 40%, transparent);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+
+/* ==========================================================
+   Hamburger to X Animation
+   ========================================================== */
+.hamburger-lines {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 22px;
+    height: 16px;
+    color: var(--text-main);
+}
+.hamburger-lines .line {
+    display: block;
+    height: 2.5px;
+    width: 100%;
+    background-color: currentColor;
+    border-radius: 2px;
+    transition: transform 0.3s ease-in-out, opacity 0.2s ease-in-out;
+}
+body:has(#mobile-menu-toggle:checked) .hamburger-lines .line1 {
+    transform: translateY(6.75px) rotate(45deg);
+}
+body:has(#mobile-menu-toggle:checked) .hamburger-lines .line2 {
+    opacity: 0;
+}
+body:has(#mobile-menu-toggle:checked) .hamburger-lines .line3 {
+    transform: translateY(-6.75px) rotate(-45deg);
 }
