@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
@@ -8,8 +8,16 @@
     <!-- FontAwesome cho icon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* CSS-only mobile filter toggle */
+        #mobile-filter-checkbox { display: none; }
+        #mobile-filter-checkbox:checked ~ #filter-content { display: block; }
+        #mobile-filter-checkbox:checked ~ .mobile-filter-header .toggle-icon { transform: rotate(180deg); }
+    </style>
 </head>
 <body>
+    <input type="checkbox" id="mobile-menu-toggle" style="display:none;">
+    <input type="checkbox" id="theme-toggle-checkbox" style="display:none;">
     <header class="site-header">
       <div class="header-inner">
         <a class="brand" href="trangchusantraodoi.html" aria-label="Semper — về trang chủ">
@@ -23,16 +31,17 @@
         </nav>
 
         <div class="header-actions">
+          <label for="mobile-menu-toggle" class="icon-button hamburger-menu"><i class="fas fa-bars"></i></label>
           <a class="sell-link" href="#dang-tin">Đăng tin miễn phí</a>
-          <button class="icon-button theme-toggle" id="theme-toggle" type="button" aria-label="Chuyển sang giao diện tối" title="Chuyển sang giao diện tối">
+          <label for="theme-toggle-checkbox" class="icon-button theme-toggle-label" aria-label="Chuyển chế độ giao diện">
             <svg class="sun-icon" viewBox="0 0 24 24" aria-hidden="true">
               <circle cx="12" cy="12" r="4"></circle>
               <path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"></path>
             </svg>
-            <svg class="moon-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <svg class="moon-icon" viewBox="0 0 24 24" aria-hidden="true" style="display:none;">
               <path d="M20.9 13A8.5 8.5 0 0 1 11 3.1 8.5 8.5 0 1 0 20.9 13Z"></path>
             </svg>
-          </button>
+          </label>
           <button class="icon-button notification-button" type="button" aria-label="Thông báo">
             <svg viewBox="0 0 24 24" aria-hidden="true">
               <path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4" />
@@ -53,11 +62,11 @@
         <div class="page-layout">
             <!-- Sidebar Lọc Sản Phẩm -->
             <aside class="sidebar-filter">
-                <!-- Nút toggle lọc trên Mobile -->
-                <div class="mobile-filter-header" id="mobile-filter-toggle">
-                    <h3><i class="fas fa-filter"></i> Bộ lọc & Tìm kiếm</h3>
-                    <i class="fas fa-chevron-down toggle-icon"></i>
-                </div>
+                <input type="checkbox" id="mobile-filter-checkbox">
+                <label for="mobile-filter-checkbox" class="mobile-filter-header" style="cursor:pointer; display:flex; justify-content:space-between; align-items:center;">
+                    <h3 style="margin:0;"><i class="fas fa-filter"></i> Bộ lọc & Tìm kiếm</h3>
+                    <i class="fas fa-chevron-down toggle-icon" style="transition: transform 0.3s;"></i>
+                </label>
                 
                 <div class="filter-content" id="filter-content">
                     <div class="filter-group">
@@ -99,13 +108,13 @@
             <div class="product-card">
                 <div class="product-image">
                     <span class="badge badge-like-new">Like New</span>
-                    
+                    <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=600&q=80" alt="MacBook Air M1">
                 </div>
                 <div class="product-info">
                     <h3 class="product-title">MacBook Air M1 2020 8GB/256GB</h3>
                     <div class="product-price">14.500.000 đ</div>
                     <p class="product-desc">Tình trạng hoàn hảo, không vết xước, sạc 50 lần. Còn đầy đủ hộp và phụ kiện đi kèm.</p>
-                    <a href="ctsp.html" class="btn-add-cart" style="text-decoration:none;"><i class="fas fa-cart-plus"></i> Xem chi tiết</a>
+                    <a href="ctsp.html#macbook" class="btn-add-cart" style="text-decoration:none;"><i class="fas fa-cart-plus"></i> Xem chi tiết</a>
                 </div>
             </div>
 
@@ -113,13 +122,13 @@
             <div class="product-card">
                 <div class="product-image">
                     <span class="badge badge-good">Good</span>
-                 
+                    <img src="https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?auto=format&fit=crop&w=600&q=80" alt="iPhone 13">
                 </div>
                 <div class="product-info">
                     <h3 class="product-title">Điện thoại iPhone 13 128GB Quốc Tế</h3>
                     <div class="product-price">11.200.000 đ</div>
                     <p class="product-desc">Máy zin áp suất, ngoại hình 98% xước lông mèo nhẹ ở viền, pin 88%.</p>
-                    <a href="ctsp.html" class="btn-add-cart" style="text-decoration:none;"><i class="fas fa-cart-plus"></i> Xem chi tiết</a>
+                    <a href="ctsp.html#iphone" class="btn-add-cart" style="text-decoration:none;"><i class="fas fa-cart-plus"></i> Xem chi tiết</a>
                 </div>
             </div>
 
@@ -127,13 +136,13 @@
             <div class="product-card">
                 <div class="product-image">
                     <span class="badge badge-fair">Fair</span>
-                   
+                    <img src="https://images.unsplash.com/photo-1595225476474-87563907a212?auto=format&fit=crop&w=600&q=80" alt="Bàn phím cơ">
                 </div>
                 <div class="product-info">
                     <h3 class="product-title">Bàn phím cơ không dây Keychron K2 V2</h3>
                     <div class="product-price">950.000 đ</div>
                     <p class="product-desc">Hoạt động tốt các phím, vỏ hơi trầy xước, mất 2 keycap gốc thay bằng keycap khác màu.</p>
-                    <a href="ctsp.html" class="btn-add-cart" style="text-decoration:none;"><i class="fas fa-cart-plus"></i> Xem chi tiết</a>
+                    <a href="ctsp.html#keychron" class="btn-add-cart" style="text-decoration:none;"><i class="fas fa-cart-plus"></i> Xem chi tiết</a>
                 </div>
             </div>
             
@@ -141,61 +150,19 @@
             <div class="product-card">
                 <div class="product-image">
                     <span class="badge badge-like-new">Like New</span>
-                   
+                    <img src="https://images.unsplash.com/photo-1516724562728-afc824a36e84?auto=format&fit=crop&w=600&q=80" alt="Máy ảnh Sony">
                 </div>
                 <div class="product-info">
                     <h3 class="product-title">Máy ảnh Mirrorless Sony A6000 + Kit</h3>
                     <div class="product-price">7.800.000 đ</div>
                     <p class="product-desc">Máy cất tủ chống ẩm thường xuyên, chụp dưới 5k shot, lens trong vắt không mốc rễ.</p>
-                    <a href="ctsp.html" class="btn-add-cart" style="text-decoration:none;"><i class="fas fa-cart-plus"></i> Xem chi tiết</a>
+                    <a href="ctsp.html#sony" class="btn-add-cart" style="text-decoration:none;"><i class="fas fa-cart-plus"></i> Xem chi tiết</a>
                 </div>
             </div>
-
-  
+            </div>
+        </div>
     </main>
-    <script>
-        const themeToggle = document.getElementById('theme-toggle');
-        
-        function applyTheme(theme) {
-            const isDark = theme === "dark";
-            document.documentElement.setAttribute('data-theme', theme);
-            if(themeToggle) {
-                themeToggle.setAttribute("aria-pressed", String(isDark));
-                themeToggle.setAttribute(
-                    "aria-label",
-                    isDark ? "Chuyển sang giao diện sáng" : "Chuyển sang giao diện tối",
-                );
-                themeToggle.title = isDark ? "Chuyển sang giao diện sáng" : "Chuyển sang giao diện tối";
-            }
-        }
-
-        const savedTheme = localStorage.getItem("semper-theme");
-        const initialTheme =
-            savedTheme === "light" || savedTheme === "dark"
-                ? savedTheme
-                : window.matchMedia("(prefers-color-scheme: dark)").matches
-                ? "dark"
-                : "light";
-
-        applyTheme(initialTheme);
-
-        if(themeToggle) {
-            themeToggle.addEventListener("click", () => {
-                const nextTheme = document.documentElement.getAttribute('data-theme') === "dark" ? "light" : "dark";
-                applyTheme(nextTheme);
-                localStorage.setItem("semper-theme", nextTheme);
-            });
-        }
-
-        // 2. Mobile Filter Sidebar Toggle
-        const filterToggle = document.getElementById('mobile-filter-toggle');
-        const filterContent = document.getElementById('filter-content');
-        if (filterToggle && filterContent) {
-            filterToggle.addEventListener('click', () => {
-                filterContent.classList.toggle('active');
-                filterToggle.classList.toggle('active');
-            });
-        }
-    </script>
 </body>
 </html>
+
+

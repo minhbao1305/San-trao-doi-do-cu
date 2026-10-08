@@ -1,4 +1,4 @@
-/* ==========================================================
+﻿/* ==========================================================
    CSS cho Trang Danh mục Sản phẩm (Sàn Đồ Cũ)
    ========================================================== */
 
@@ -18,10 +18,36 @@
     --badge-good: #3b82f6;
     --badge-fair: #f59e0b;
     --serif: Georgia, "Times New Roman", serif;
+
+    /* Typography System */
+    --fs-xs: 0.75rem;    
+    --fs-sm: 0.9rem;     
+    --fs-base: 1rem;     
+    --fs-md: 1.1rem;     
+    --fs-lg: 1.3rem;     
+    --fs-xl: 1.5rem;     
+    --fs-xxl: 1.8rem;    
+    --fs-xxxl: 2.2rem;
+    --fs-brand: 22px;    
+}
+
+@media (max-width: 600px) {
+    :root {
+        --fs-xs: 0.7rem;     
+        --fs-sm: 0.85rem;    
+        --fs-base: 0.95rem;  
+        --fs-md: 1rem;       
+        --fs-lg: 1.15rem;    
+        --fs-xl: 1.25rem;    
+        --fs-xxl: 1.4rem;    
+        --fs-xxxl: 1.7rem;
+        --fs-brand: 19px;
+    }
 }
 
 /* Dark Mode Theme */
-[data-theme="dark"] {
+.dark-theme,
+body:has(#theme-toggle-checkbox:checked) {
     color-scheme: dark;
     --primary-color: #52CCB0; 
     --primary-hover: #3bb99d; 
@@ -56,41 +82,80 @@ body {
 }
 
 /* Semper Header */
-.site-header { position: relative; z-index: 100; height: 82px; border-bottom: 1px solid var(--border-color); background: var(--bg-card); box-shadow: 0 3px 14px var(--shadow-color); }
+.site-header { position: sticky; top: 0; z-index: 100; height: 82px; border-bottom: 1px solid var(--border-color); background: var(--bg-card); box-shadow: 0 3px 14px var(--shadow-color); transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease; }
 .header-inner { width: min(1200px, calc(100% - 64px)); height: 100%; margin: auto; display: flex; align-items: center; justify-content: space-between; }
-.brand { display: inline-flex; align-items: center; gap: 9px; font: 800 22px/1 "Manrope", sans-serif; letter-spacing: -1.2px; text-decoration: none; color: var(--text-main); }
+.brand { display: inline-flex; align-items: center; gap: 9px; font: 800 var(--fs-brand)/1 "Manrope", sans-serif; letter-spacing: -1.2px; text-decoration: none; color: var(--text-main); }
 .brand-mark { display: grid; width: 31px; height: 31px; place-items: center; border-radius: 50% 50% 50% 10%; color: #163b33; background: var(--primary-color); font: italic 700 23px/1 var(--serif); transform: rotate(-8deg); }
 .brand-period { color: #e5a65e; }
 .desktop-nav { display: flex; height: 100%; align-items: center; gap: 38px; }
-.nav-link { position: relative; color: var(--text-muted); font-size: 13px; font-weight: 600; transition: color .2s; text-decoration: none; }
+.nav-link { position: relative; color: var(--text-muted); font-size: var(--fs-sm); font-weight: 600; transition: color .2s; text-decoration: none; }
 .nav-link:hover, .nav-link.active { color: #267966; }
-[data-theme="dark"] .nav-link:hover, [data-theme="dark"] .nav-link.active { color: var(--primary-color); }
+.dark-theme .nav-link:hover, .dark-theme .nav-link.active,
+body:has(#theme-toggle-checkbox:checked) .nav-link:hover, body:has(#theme-toggle-checkbox:checked) .nav-link.active { color: var(--primary-color); }
 .nav-link.active::after { position: absolute; right: 0; bottom: -32px; left: 0; height: 2px; background: #267966; content: ""; }
-[data-theme="dark"] .nav-link.active::after { background: var(--primary-color); }
+.dark-theme .nav-link.active::after,
+body:has(#theme-toggle-checkbox:checked) .nav-link.active::after { background: var(--primary-color); }
 .header-actions { display: flex; align-items: center; gap: 20px; }
-.sell-link { color: var(--primary-color); font-size: 13px; font-weight: 700; text-decoration: none; }
+.icon-button.hamburger-menu { display: none; }
+.sell-link { color: var(--primary-color); font-size: var(--fs-sm); font-weight: 700; text-decoration: none; }
 .icon-button, .avatar-button { position: relative; display: grid; width: 37px; height: 37px; place-items: center; border: 0; border-radius: 50%; background: transparent; cursor: pointer; color: var(--text-main); }
 .icon-button svg { width: 20px; fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.6; }
 .theme-toggle { color: var(--primary-color); }
-.theme-toggle .moon-icon, [data-theme="dark"] .theme-toggle .sun-icon { display: none; }
-[data-theme="dark"] .theme-toggle .moon-icon { display: block; }
+.theme-toggle .moon-icon, .dark-theme .theme-toggle .sun-icon,
+body:has(#theme-toggle-checkbox:checked) .theme-toggle .sun-icon { display: none; }
+.dark-theme .theme-toggle .moon-icon,
+body:has(#theme-toggle-checkbox:checked) .theme-toggle .moon-icon { display: block; }
+
+/* If using checkbox as toggle button directly without JS, can still use :has */
+body:has(#theme-toggle-checkbox:checked) .sun-icon { display: none; }
+body:has(#theme-toggle-checkbox:checked) .moon-icon { 
+    display: block; 
+    color: #fbbf24; /* Make moon icon yellow/bright */
+    fill: #fbbf24; 
+    transition: color 0.2s, fill 0.2s;
+}
+body.dark-theme .sun-icon { display: none; }
+body.dark-theme .moon-icon { 
+    display: block; 
+    color: #fbbf24; 
+    fill: #fbbf24; 
+    transition: color 0.2s, fill 0.2s;
+}
+
+/* Hover effect for moon icon in dark mode */
+body:has(#theme-toggle-checkbox:checked) .theme-toggle-label:hover .moon-icon,
+body.dark-theme .theme-toggle-label:hover .moon-icon {
+    color: #ffffff !important;
+    fill: #ffffff !important;
+}
 .notification-dot { position: absolute; top: 7px; right: 7px; width: 6px; height: 6px; border: 1px solid var(--bg-card); border-radius: 50%; background: #db8769; }
-.avatar-button { color: #fff; background: #d89b79; font-size: 13px; font-weight: 700; }
+.avatar-button { color: #fff; background: #d89b79; font-size: var(--fs-sm); font-weight: 700; }
 
 @media (max-width: 900px) {
   .header-inner { width: min(100% - 40px, 720px); }
   .desktop-nav { gap: 19px; }
   .header-actions { gap: 11px; }
 }
-@media (max-width: 620px) {
-  .site-header { height: auto; margin-bottom: 20px; }
+
+@media (max-width: 768px) {
+  .site-header { height: auto; padding: 15px 0; }
   .header-inner { min-height: 68px; flex-wrap: wrap; width: calc(100% - 36px); }
-  .brand { font-size: 19px; }
-  .desktop-nav { display: flex; width: 100%; height: 40px; order: 3; gap: 22px; overflow-x: auto; }
-  .nav-link { flex: none; font-size: 11px; }
-  .nav-link.active::after { bottom: 0; }
+  .desktop-nav { 
+      display: none; 
+      width: 100%; 
+      order: 4; 
+      flex-direction: column; 
+      gap: 15px; 
+      margin-top: 15px; 
+      padding-top: 15px;
+      border-top: 1px solid var(--border-color);
+  }
+    .icon-button.hamburger-menu { display: flex; font-size: var(--fs-xl); color: var(--text-main); cursor: pointer; }
+  .nav-link { width: 100%; padding: 10px 0; font-size: var(--fs-md); flex: none; }
+  .nav-link.active::after { bottom: -5px; }
+  body:has(#mobile-menu-toggle:checked) .desktop-nav { display: flex; }
   .header-actions { gap: 5px; }
-  .sell-link { max-width: 78px; font-size: 9px; text-align: right; }
+  .sell-link { max-width: 78px; text-align: right; }
   .notification-button { display: none; }
   .icon-button { width: 30px; }
   .avatar-button { width: 30px; height: 30px; }
@@ -98,12 +163,13 @@ body {
 
 /* Tiêu đề trang */
 .page-title {
+    margin-top: 40px;
     margin-bottom: 30px;
 }
 
 .page-title h2 {
     font-family: 'Manrope', sans-serif;
-    font-size: 1.5rem;
+    font-size: var(--fs-xl);
     color: var(--text-main);
     border-left: 4px solid var(--primary-color);
     padding-left: 12px;
@@ -141,7 +207,7 @@ body {
 }
 
 .filter-group h3 {
-    font-size: 1.1rem;
+    font-size: var(--fs-md);
     color: var(--text-main);
     margin-bottom: 15px;
     display: flex;
@@ -172,7 +238,7 @@ body {
     margin-bottom: 12px;
     color: var(--text-muted);
     cursor: pointer;
-    font-size: 0.95rem;
+    font-size: var(--fs-sm);
     transition: color 0.2s;
 }
 
@@ -196,7 +262,7 @@ body {
     border: none;
     border-radius: 8px;
     font-weight: 600;
-    font-size: 1rem;
+    font-size: var(--fs-base);
     cursor: pointer;
     transition: background-color 0.2s;
     display: flex;
@@ -279,7 +345,7 @@ body {
     left: 15px;
     padding: 6px 14px;
     border-radius: 30px;
-    font-size: 0.75rem;
+    font-size: var(--fs-xs);
     font-weight: 700;
     color: white;
     z-index: 10;
@@ -313,7 +379,7 @@ body {
 
 .product-title {
     font-family: 'Manrope', sans-serif;
-    font-size: 1.1rem;
+    font-size: var(--fs-md);
     font-weight: 600;
     margin-bottom: 12px;
     color: var(--text-main);
@@ -327,7 +393,7 @@ body {
 }
 
 .product-price {
-    font-size: 1.3rem;
+    font-size: var(--fs-lg);
     font-weight: 700;
     color: var(--primary-color);
     margin-bottom: 12px;
@@ -335,7 +401,7 @@ body {
 
 .product-desc {
     color: var(--text-muted);
-    font-size: 0.9rem;
+    font-size: var(--fs-sm);
     margin-bottom: 24px;
     flex-grow: 1; /* Chiếm khoảng trống còn lại */
     
@@ -353,7 +419,7 @@ body {
     border: 2px solid var(--primary-color);
     padding: 12px;
     border-radius: 8px;
-    font-size: 1rem;
+    font-size: var(--fs-base);
     font-weight: 600;
     cursor: pointer;
     transition: all 0.2s ease;
@@ -369,45 +435,74 @@ body {
     color: white;
 }
 
-/* Header toggle mobile filter (Hidden on Desktop) */
-.mobile-filter-header {
+/* ==========================================================
+   Filter Collapse Logic (No-JS)
+   ========================================================== */
+#mobile-filter-checkbox {
     display: none;
 }
 
-/* ==========================================================
-   Responsive adjustments
-   ========================================================== */
-/* Tablet & Mobile (Dưới 768px) */
-@media (max-width: 768px) {
-    .header-container {
-        position: relative; /* Cần thiết cho menu xổ xuống */
-    }
+.filter-content {
+    max-height: 1500px; /* Ð? l?n d? ch?a b? l?c */
+    overflow: hidden;
+    transition: max-height 0.4s ease, opacity 0.4s ease, margin-top 0.4s ease, padding-top 0.4s ease;
+    opacity: 1;
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px dashed var(--border-color);
+}
 
-    .nav-menu {
-        display: none; /* Ẩn toàn bộ menu liên kết */
-        position: absolute;
-        top: 100%;
-        left: 0;
+/* Khi checkbox du?c tch (m?c d?nh l unchecked t?c l Dang m?), ph?n b? l?c s? dng l?i */
+#mobile-filter-checkbox:checked ~ .filter-content {
+    max-height: 0;
+    opacity: 0;
+    margin-top: 0;
+    padding-top: 0;
+    border-top: 0 dashed transparent;
+}
+
+#mobile-filter-checkbox:checked ~ .mobile-filter-header .toggle-icon {
+    transform: rotate(180deg);
+}
+
+/* Header toggle mobile filter */
+.mobile-filter-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.mobile-filter-header h3 {
+    margin: 0;
+    font-size: var(--fs-md);
+    color: var(--text-main);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.toggle-icon {
+    transition: transform 0.4s ease;
+    color: var(--text-main);
+}
+
+    .page-layout .product-grid {
         width: 100%;
-        background-color: var(--header-bg);
-        box-shadow: 0 4px 6px var(--shadow-color);
-        padding: 20px;
-        border-top: 1px solid var(--border-color);
-    }
-    
-    .nav-menu.active {
-        display: block; /* Hiện khi click hamburger */
     }
 
-    .nav-menu ul {
-        flex-direction: column;
-        gap: 15px;
-    }
-    
-    .hamburger-menu {
-        display: block; /* Hiển thị icon Hamburger */
-    }
 
+/* Mobile nhỏ (Dưới 600px) */
+@media (max-width: 600px) {
+    .product-grid {
+        grid-template-columns: repeat(auto-fill, minmax(100%, 1fr)); /* 1 cột trên mobile nhỏ */
+    }
+}
+
+
+
+
+@media (max-width: 768px) {
     /* Đảo layout thành 1 cột */
     .page-layout {
         flex-direction: column;
@@ -416,53 +511,5 @@ body {
     .sidebar-filter {
         width: 100%; /* Trải rộng full màn hình */
         padding: 15px 20px;
-    }
-
-    /* --- Toggle Filter trên Mobile --- */
-    .mobile-filter-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        cursor: pointer;
-    }
-
-    .mobile-filter-header h3 {
-        margin: 0;
-        font-size: 1.1rem;
-        color: var(--text-main);
-        display: flex;
-        align-items: center;
-        gap: 8px;
-    }
-
-    .toggle-icon {
-        transition: transform 0.3s;
-        color: var(--text-main);
-    }
-
-    .mobile-filter-header.active .toggle-icon {
-        transform: rotate(180deg);
-    }
-
-    .filter-content {
-        display: none; /* Ẩn bộ lọc mặc định trên mobile */
-        margin-top: 15px;
-        padding-top: 15px;
-        border-top: 1px dashed var(--border-color);
-    }
-
-    .filter-content.active {
-        display: block; /* Hiện bộ lọc khi click */
-    }
-
-    .page-layout .product-grid {
-        width: 100%;
-    }
-}
-
-/* Mobile nhỏ (Dưới 600px) */
-@media (max-width: 600px) {
-    .product-grid {
-        grid-template-columns: repeat(auto-fill, minmax(100%, 1fr)); /* 1 cột trên mobile nhỏ */
     }
 }

@@ -4,13 +4,14 @@
 
 /* Spacing cho khối Main */
 .product-detail-main {
+    padding-top: 40px;
     padding-bottom: 60px;
 }
 
 /* Đường dẫn (Breadcrumb) */
 .breadcrumb {
     margin-bottom: 25px;
-    font-size: 0.95rem;
+    font-size: var(--fs-sm);
     color: var(--text-muted);
 }
 
@@ -39,6 +40,7 @@
     box-shadow: 0 5px 18px var(--shadow-color);
     border: 1px solid var(--border-color);
     margin-bottom: 40px;
+    transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 /* ----------------------------------
@@ -56,6 +58,7 @@
     overflow: hidden;
     margin-bottom: 15px;
     background-color: var(--bg-main);
+    transition: background-color 0.3s ease;
 }
 
 .main-image img {
@@ -100,7 +103,7 @@
 
 .product-title-large {
     font-family: 'Manrope', sans-serif;
-    font-size: 1.8rem;
+    font-size: var(--fs-xxxl);
     color: var(--text-main);
     margin-bottom: 15px;
     line-height: 1.4;
@@ -108,7 +111,7 @@
 }
 
 .product-price-large {
-    font-size: 2.2rem;
+    font-size: var(--fs-xxl);
     color: var(--primary-color);
     font-weight: 700;
     margin-bottom: 25px;
@@ -124,6 +127,7 @@
     border-radius: 10px;
     margin-bottom: 25px;
     border: 1px solid var(--border-color);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .seller-avatar {
@@ -136,12 +140,12 @@
 .seller-name {
     font-weight: 600;
     color: var(--text-main);
-    font-size: 1.1rem;
+    font-size: var(--fs-md);
 }
 
 .seller-rating {
     color: var(--text-muted);
-    font-size: 0.9rem;
+    font-size: var(--fs-sm);
     margin-top: 5px;
 }
 
@@ -163,7 +167,7 @@
     padding: 12px 0;
     border-bottom: 1px dashed var(--border-color);
     color: var(--text-main);
-    font-size: 1.05rem;
+    font-size: var(--fs-base);
 }
 
 .product-specs li strong {
@@ -182,7 +186,7 @@
 .btn-primary-large, .btn-secondary-large {
     padding: 16px;
     border-radius: 10px;
-    font-size: 1.1rem;
+    font-size: var(--fs-md);
     font-weight: 600;
     cursor: pointer;
     flex: 1;
@@ -225,11 +229,12 @@
     border-radius: 7px;
     box-shadow: 0 5px 18px var(--shadow-color);
     border: 1px solid var(--border-color);
+    transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .product-description-full h3 {
     font-family: 'Manrope', sans-serif;
-    font-size: 1.4rem;
+    font-size: var(--fs-xl);
     margin-bottom: 20px;
     color: var(--text-main);
     padding-bottom: 10px;
@@ -241,7 +246,7 @@
     margin-bottom: 15px;
     color: var(--text-main);
     line-height: 1.8;
-    font-size: 1.05rem;
+    font-size: var(--fs-base);
 }
 
 /* ==========================================================
@@ -256,13 +261,5 @@
     
     .action-buttons {
         flex-direction: column;
-    }
-    
-    .product-title-large {
-        font-size: 1.5rem;
-    }
-    
-    .product-price-large {
-        font-size: 1.8rem;
     }
 }
