@@ -1,0 +1,198 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danh mục sản phẩm - Đồ cũ</title>
+    <link rel="stylesheet" href="../css/sanpham.css">
+    <!-- FontAwesome cho icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* CSS-only mobile filter toggle */
+        #mobile-filter-checkbox { display: none; }
+        #mobile-filter-checkbox:checked ~ #filter-content { display: block; }
+        #mobile-filter-checkbox:checked ~ .mobile-filter-header .toggle-icon { transform: rotate(180deg); }
+    </style>
+</head>
+<body>
+    <input type="checkbox" id="mobile-menu-toggle" style="display:none;">
+    <input type="checkbox" id="theme-toggle-checkbox" style="display:none;">
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="trangchusantraodoi.html" aria-label="Semper — về trang chủ">
+          <span class="brand-mark" aria-hidden="true">S</span>
+          <span>Semper<span class="brand-period">.</span></span>
+        </a>
+
+        <nav class="desktop-nav" aria-label="Điều hướng chính">
+          <a class="nav-link" href="trangchusantraodoi.html">Trang chủ</a>
+          <a class="nav-link active" href="sanpham.html">Danh mục sản phẩm</a>
+        </nav>
+
+        <div class="header-actions">
+          <label for="mobile-menu-toggle" class="icon-button hamburger-menu"><div class="hamburger-lines"><span class="line line1"></span><span class="line line2"></span><span class="line line3"></span></div></label>
+          <a class="sell-link" href="dangtin.html">Đăng tin</a>
+          <label for="theme-toggle-checkbox" class="icon-button theme-toggle-label" aria-label="Chuyển chế độ giao diện">
+            <svg class="sun-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="4"></circle>
+              <path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"></path>
+            </svg>
+            <svg class="moon-icon" viewBox="0 0 24 24" aria-hidden="true" style="display:none;">
+              <path d="M20.9 13A8.5 8.5 0 0 1 11 3.1 8.5 8.5 0 1 0 20.9 13Z"></path>
+            </svg>
+          </label>
+          <button class="icon-button notification-button" type="button" aria-label="Thông báo">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4" />
+            </svg>
+            <span class="notification-dot" aria-hidden="true"></span>
+          </button>
+          <button class="avatar-button" type="button" aria-label="Tài khoản của bạn">L</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="main-content container">
+        <div class="page-title">
+            <h2>Danh sách sản phẩm</h2>
+        </div>
+
+        <!-- Layout 2 cột: Sidebar & Lưới sản phẩm -->
+        <div class="page-layout">
+            <!-- Sidebar Lọc Sản Phẩm -->
+            <aside class="sidebar-filter">
+                <input type="checkbox" id="mobile-filter-checkbox">
+                <label for="mobile-filter-checkbox" class="mobile-filter-header" style="cursor:pointer; display:flex; justify-content:space-between; align-items:center;">
+                    <h3 style="margin:0;"><i class="fas fa-filter"></i> Bộ lọc & Tìm kiếm</h3>
+                    <i class="fas fa-chevron-down toggle-icon" style="transition: transform 0.3s;"></i>
+                </label>
+                
+                <div class="filter-content" id="filter-content">
+                    <div class="filter-group">
+                        <h3><i class="fas fa-search"></i> Tìm kiếm</h3>
+                        <input type="text" class="filter-input" placeholder="Nhập tên sản phẩm...">
+                    </div>
+
+                    <div class="filter-group">
+                        <h3><i class="fas fa-list"></i> Danh mục</h3>
+                        <label class="filter-checkbox"><input type="checkbox" checked> Tất cả</label>
+                        <label class="filter-checkbox"><input type="checkbox"> Điện thoại</label>
+                        <label class="filter-checkbox"><input type="checkbox"> Laptop & Mac</label>
+                        <label class="filter-checkbox"><input type="checkbox"> Phụ kiện</label>
+                    </div>
+
+                    <div class="filter-group">
+                        <h3><i class="fas fa-tags"></i> Tình trạng</h3>
+                        <label class="filter-checkbox"><input type="checkbox" value="like-new"> <span class="badge badge-like-new" style="position:static; padding:3px 8px; font-size:0.7rem; box-shadow:none;">Like New</span></label>
+                        <label class="filter-checkbox"><input type="checkbox" value="good"> <span class="badge badge-good" style="position:static; padding:3px 8px; font-size:0.7rem; box-shadow:none;">Good</span></label>
+                        <label class="filter-checkbox"><input type="checkbox" value="fair"> <span class="badge badge-fair" style="position:static; padding:3px 8px; font-size:0.7rem; box-shadow:none;">Fair</span></label>
+                    </div>
+
+                    <div class="filter-group">
+                        <h3><i class="fas fa-money-bill-wave"></i> Mức giá</h3>
+                        <label class="filter-checkbox"><input type="radio" name="price" checked> Tất cả mức giá</label>
+                        <label class="filter-checkbox"><input type="radio" name="price"> Dưới 2 triệu</label>
+                        <label class="filter-checkbox"><input type="radio" name="price"> 2 - 5 triệu</label>
+                        <label class="filter-checkbox"><input type="radio" name="price"> 5 - 10 triệu</label>
+                        <label class="filter-checkbox"><input type="radio" name="price"> Trên 10 triệu</label>
+                    </div>
+
+                    <button class="btn-filter"><i class="fas fa-filter"></i> Áp dụng bộ lọc</button>
+                </div>
+            </aside>
+
+            <!-- Cột chứa lưới sản phẩm -->
+            <div class="product-grid">
+            <!-- Sản phẩm 1 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="badge badge-like-new">Like New</span>
+                    <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=600&q=80" alt="MacBook Air M1">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">MacBook Air M1 2020 8GB/256GB</h3>
+                    <div class="product-price">14.500.000 đ</div>
+                    <p class="product-desc">Tình trạng hoàn hảo, không vết xước, sạc 50 lần. Còn đầy đủ hộp và phụ kiện đi kèm.</p>
+                    <a href="ctsp.html#macbook" class="btn-add-cart" style="text-decoration:none;"><i class="fas fa-cart-plus"></i> Xem chi tiết</a>
+                </div>
+            </div>
+
+            <!-- Sản phẩm 2 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="badge badge-good">Good</span>
+                    <img src="https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?auto=format&fit=crop&w=600&q=80" alt="iPhone 13">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Điện thoại iPhone 13 128GB Quốc Tế</h3>
+                    <div class="product-price">11.200.000 đ</div>
+                    <p class="product-desc">Máy zin áp suất, ngoại hình 98% xước lông mèo nhẹ ở viền, pin 88%.</p>
+                    <a href="ctsp.html#iphone" class="btn-add-cart" style="text-decoration:none;"><i class="fas fa-cart-plus"></i> Xem chi tiết</a>
+                </div>
+            </div>
+
+            <!-- Sản phẩm 3 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="badge badge-fair">Fair</span>
+                    <img src="https://images.unsplash.com/photo-1595225476474-87563907a212?auto=format&fit=crop&w=600&q=80" alt="Bàn phím cơ">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Bàn phím cơ không dây Keychron K2 V2</h3>
+                    <div class="product-price">950.000 đ</div>
+                    <p class="product-desc">Hoạt động tốt các phím, vỏ hơi trầy xước, mất 2 keycap gốc thay bằng keycap khác màu.</p>
+                    <a href="ctsp.html#keychron" class="btn-add-cart" style="text-decoration:none;"><i class="fas fa-cart-plus"></i> Xem chi tiết</a>
+                </div>
+            </div>
+
+            <!-- Sản phẩm 4 -->
+             <div class="product-card">
+                <div class="product-image">
+                    <span class="badge badge-fair">Fair</span>
+                    <img src="https://images.unsplash.com/photo-1595225476474-87563907a212?auto=format&fit=crop&w=600&q=80" alt="Bàn phím cơ">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Bàn phím cơ không dây Keychron K2 V2</h3>
+                    <div class="product-price">950.000 đ</div>
+                    <p class="product-desc">Hoạt động tốt các phím, vỏ hơi trầy xước, mất 2 keycap gốc thay bằng keycap khác màu.</p>
+                    <a href="ctsp.html#keychron" class="btn-add-cart" style="text-decoration:none;"><i class="fas fa-cart-plus"></i> Xem chi tiết</a>
+                </div>
+            </div>
+
+            <!-- Sản phẩm 5 -->
+             <div class="product-card">
+                <div class="product-image">
+                    <span class="badge badge-fair">Fair</span>
+                    <img src="https://images.unsplash.com/photo-1595225476474-87563907a212?auto=format&fit=crop&w=600&q=80" alt="Bàn phím cơ">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Bàn phím cơ không dây Keychron K2 V2</h3>
+                    <div class="product-price">950.000 đ</div>
+                    <p class="product-desc">Hoạt động tốt các phím, vỏ hơi trầy xước, mất 2 keycap gốc thay bằng keycap khác màu.</p>
+                    <a href="ctsp.html#keychron" class="btn-add-cart" style="text-decoration:none;"><i class="fas fa-cart-plus"></i> Xem chi tiết</a>
+                </div>
+            </div>
+            
+            <!-- Sản phẩm 6 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="badge badge-like-new">Like New</span>
+                    <img src="https://images.unsplash.com/photo-1516724562728-afc824a36e84?auto=format&fit=crop&w=600&q=80" alt="Máy ảnh Sony">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Máy ảnh Mirrorless Sony A6000 + Kit</h3>
+                    <div class="product-price">7.800.000 đ</div>
+                    <p class="product-desc">Máy cất tủ chống ẩm thường xuyên, chụp dưới 5k shot, lens trong vắt không mốc rễ.</p>
+                    <a href="ctsp.html#sony" class="btn-add-cart" style="text-decoration:none;"><i class="fas fa-cart-plus"></i> Xem chi tiết</a>
+                </div>
+            </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
+
+
+
+

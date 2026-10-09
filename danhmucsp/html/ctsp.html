@@ -1,0 +1,311 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi tiết sản phẩm - Sàn Đồ Cũ</title>
+    <!-- Tái sử dụng CSS chung -->
+    <link rel="stylesheet" href="../css/sanpham.css">
+    <!-- CSS riêng cho trang chi tiết -->
+    <link rel="stylesheet" href="../css/ctsp.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* CSS-only tab switching for products */
+        .product-view { display: none; }
+        .product-view:target { display: block; }
+
+        /* Default fallback (show first product) when no target is specified in the URL hash */
+        .product-detail-main:not(:has(.product-view:target)) #macbook {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <input type="checkbox" id="mobile-menu-toggle" style="display:none;">
+    <input type="checkbox" id="theme-toggle-checkbox" style="display:none;">
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="trangchusantraodoi.html" aria-label="Semper — về trang chủ">
+          <span class="brand-mark" aria-hidden="true">S</span>
+          <span>Semper<span class="brand-period">.</span></span>
+        </a>
+
+        <nav class="desktop-nav" aria-label="Điều hướng chính">
+          <a class="nav-link" href="trangchusantraodoi.html">Trang chủ</a>
+          <a class="nav-link active" href="sanpham.html">Danh mục sản phẩm</a>
+        </nav>
+
+        <div class="header-actions">
+          <label for="mobile-menu-toggle" class="icon-button hamburger-menu"><div class="hamburger-lines"><span class="line line1"></span><span class="line line2"></span><span class="line line3"></span></div></label>
+          <a class="sell-link" href="dangtin.html">Đăng tin</a>
+          <label for="theme-toggle-checkbox" class="icon-button theme-toggle-label" aria-label="Chuyển chế độ giao diện">
+            <svg class="sun-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="4"></circle>
+              <path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"></path>
+            </svg>
+            <svg class="moon-icon" viewBox="0 0 24 24" aria-hidden="true" style="display:none;">
+              <path d="M20.9 13A8.5 8.5 0 0 1 11 3.1 8.5 8.5 0 1 0 20.9 13Z"></path>
+            </svg>
+          </label>
+          <button class="icon-button notification-button" type="button" aria-label="Thông báo">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4" />
+            </svg>
+            <span class="notification-dot" aria-hidden="true"></span>
+          </button>
+          <button class="avatar-button" type="button" aria-label="Tài khoản của bạn">L</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="container product-detail-main">
+
+        <!-- SẢN PHẨM 1: IPHONE 13 -->
+        <div id="iphone" class="product-view">
+            <div class="breadcrumb">
+                <a href="sanpham.html">Danh mục sản phẩm</a> > <span>iPhone 13 128GB Quốc Tế</span>
+            </div>
+            <div class="product-detail-layout">
+                <div class="product-gallery">
+                    <!-- CSS-only Radio Buttons -->
+                    <input type="radio" name="iphone-gallery" id="iphone-img1" class="gallery-radio" checked>
+                    <input type="radio" name="iphone-gallery" id="iphone-img2" class="gallery-radio">
+                    <input type="radio" name="iphone-gallery" id="iphone-img3" class="gallery-radio">
+
+                    <div class="main-image">
+                        <span class="badge badge-good" style="box-shadow: none; z-index: 3;">Good</span>
+                        <img class="gallery-img img1" src="https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?auto=format&fit=crop&w=800&q=80" alt="Ảnh chính iPhone 13 1">
+                        <img class="gallery-img img2" src="https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?auto=format&fit=crop&w=800&q=80" alt="Ảnh chính iPhone 13 2">
+                        <img class="gallery-img img3" src="https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?auto=format&fit=crop&w=800&q=80" alt="Ảnh chính iPhone 13 3">
+                    </div>
+                    <div class="thumbnail-list">
+                        <label for="iphone-img1"><img src="https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?auto=format&fit=crop&w=200&q=80" class="thumb" alt="Thumb 1"></label>
+                        <label for="iphone-img2"><img src="https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?auto=format&fit=crop&w=200&q=80" class="thumb" alt="Thumb 2"></label>
+                        <label for="iphone-img3"><img src="https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?auto=format&fit=crop&w=200&q=80" class="thumb" alt="Thumb 3"></label>
+                    </div>
+                </div>
+                <div class="product-info-detail">
+                    <h2 class="product-title-large">Điện thoại iPhone 13 128GB Quốc Tế</h2>
+                    <div class="product-price-large">11.200.000 đ</div>
+                    <div class="seller-info">
+                        <img src="https://imgcdn.stablediffusionweb.com/2024/11/1/b51f49a9-82a1-4659-905d-c8cd8643bade.jpg" alt="Avatar" class="seller-avatar">
+                        <div class="seller-details">
+                            <div class="seller-name">Nguyễn Văn A <i class="fas fa-check-circle" style="color: #10b981; font-size: 0.9rem;"></i></div>
+                            <div class="seller-rating"><i class="fas fa-star"></i> 4.8 (12 đánh giá) - Hoạt động 2 giờ trước</div>
+                        </div>
+                    </div>
+                    <div class="product-specs">
+                        <ul>
+                            <li><strong>Tình trạng:</strong> Ngoại hình 98%, pin 88%</li>
+                            <li><strong>Bảo hành:</strong> Bao test 7 ngày</li>
+                            <li><strong>Khu vực:</strong> Quận Cầu Giấy, Hà Nội</li>
+                        </ul>
+                    </div>
+                    <div class="action-buttons">
+                        <button class="btn-primary-large"><i class="fas fa-comments"></i> Chat với người bán</button>
+                        <button class="btn-secondary-large"><i class="fas fa-heart"></i> Lưu tin</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-description-full">
+                <h3>Mô tả chi tiết</h3>
+                <p>Do lên đời nên mình cần pass lại chiếc iPhone 13 bản 128GB Quốc Tế màu Tím.</p>
+                <p>
+                    - Máy nguyên zin, chưa từng qua sửa chữa, áp suất nhảy ầm ầm.<br>
+                    - Ngoại hình: xước lông mèo cực nhẹ ở viền thép do dùng ốp, không cấn móp, mặt kính trước sau đẹp keng.<br>
+                    - Pin: 88% vẫn dùng thoải mái 1 ngày.<br>
+                    - Phụ kiện đi kèm: Cáp sạc zin theo máy, tặng kèm 3 ốp lưng mua trên Shopee.
+                </p>
+                <p>Giao dịch trực tiếp tại nhà riêng (Khu vực Cầu Giấy), không hẹn ngoài quán cafe. Có fix nhẹ tiền xăng xe cho anh em nhiệt tình qua xem máy.</p>
+            </div>
+        </div>
+
+        <!-- SẢN PHẨM 2: MACBOOK AIR -->
+        <div id="macbook" class="product-view">
+            <div class="breadcrumb">
+                <a href="sanpham.html">Danh mục sản phẩm</a> > <span>MacBook Air M1 2020 8GB/256GB</span>
+            </div>
+            <div class="product-detail-layout">
+                <div class="product-gallery">
+                    <!-- CSS-only Radio Buttons -->
+                    <input type="radio" name="macbook-gallery" id="macbook-img1" class="gallery-radio" checked>
+                    <input type="radio" name="macbook-gallery" id="macbook-img2" class="gallery-radio">
+                    <input type="radio" name="macbook-gallery" id="macbook-img3" class="gallery-radio">
+
+                    <div class="main-image">
+                        <span class="badge badge-like-new" style="box-shadow: none; z-index: 3;">Like New</span>
+                        <img class="gallery-img img1" src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=800&q=80" alt="Ảnh chính MacBook 1">
+                        <img class="gallery-img img2" src="https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?auto=format&fit=crop&w=800&q=80" alt="Ảnh chính MacBook 2">
+                        <img class="gallery-img img3" src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&w=800&q=80" alt="Ảnh chính MacBook 3">
+                    </div>
+                    <div class="thumbnail-list">
+                        <label for="macbook-img1"><img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=200&q=80" class="thumb" alt="Thumb 1"></label>
+                        <label for="macbook-img2"><img src="https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?auto=format&fit=crop&w=200&q=80" class="thumb" alt="Thumb 2"></label>
+                        <label for="macbook-img3"><img src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&w=200&q=80" class="thumb" alt="Thumb 3"></label>
+                    </div>
+                </div>
+                <div class="product-info-detail">
+                    <h2 class="product-title-large">MacBook Air M1 2020 8GB/256GB</h2>
+                    <div class="product-price-large">14.500.000 đ</div>
+                    <div class="seller-info">
+                        <img src="https://imgcdn.stablediffusionweb.com/2024/11/1/b51f49a9-82a1-4659-905d-c8cd8643bade.jpg" alt="Avatar" class="seller-avatar">
+                        <div class="seller-details">
+                            <div class="seller-name">Trần Thị B <i class="fas fa-check-circle" style="color: #10b981; font-size: 0.9rem;"></i></div>
+                            <div class="seller-rating"><i class="fas fa-star"></i> 5.0 (20 đánh giá) - Hoạt động 1 ngày trước</div>
+                        </div>
+                    </div>
+                    <div class="product-specs">
+                        <ul>
+                            <li><strong>Tình trạng:</strong> Ngoại hình hoàn hảo, sạc 50 lần</li>
+                            <li><strong>Bảo hành:</strong> Hết bảo hành Apple</li>
+                            <li><strong>Khu vực:</strong> Quận 1, Hồ Chí Minh</li>
+                        </ul>
+                    </div>
+                    <div class="action-buttons">
+                        <button class="btn-primary-large"><i class="fas fa-comments"></i> Chat với người bán</button>
+                        <button class="btn-secondary-large"><i class="fas fa-heart"></i> Lưu tin</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-description-full">
+                <h3>Mô tả chi tiết</h3>
+                <p>Cần bán lại MacBook Air M1 bản 8GB/256GB màu Xám (Space Gray).</p>
+                <p>
+                    - Tình trạng: Máy đẹp như mới, không một vết xước do dán JCPAL từ lúc mới mua.<br>
+                    - Sức khỏe pin: 99%, mới sạc khoảng 50 lần.<br>
+                    - Phụ kiện: Đầy đủ hộp (fullbox), sạc cáp zin theo máy chưa tháo bọc.<br>
+                    - Hoạt động hoàn hảo, không lỗi lầm.
+                </p>
+                <p>Bao test thoải mái, giao dịch trực tiếp tại nhà.</p>
+            </div>
+        </div>
+
+        <!-- SẢN PHẨM 3: KEYCHRON -->
+        <div id="keychron" class="product-view">
+            <div class="breadcrumb">
+                <a href="sanpham.html">Danh mục sản phẩm</a> > <span>Bàn phím cơ Keychron K2 V2</span>
+            </div>
+            <div class="product-detail-layout">
+                <div class="product-gallery">
+                    <!-- CSS-only Radio Buttons -->
+                    <input type="radio" name="keychron-gallery" id="keychron-img1" class="gallery-radio" checked>
+                    <input type="radio" name="keychron-gallery" id="keychron-img2" class="gallery-radio">
+                    <input type="radio" name="keychron-gallery" id="keychron-img3" class="gallery-radio">
+
+                    <div class="main-image">
+                        <span class="badge badge-fair" style="box-shadow: none; z-index: 3;">Fair</span>
+                        <img class="gallery-img img1" src="https://images.unsplash.com/photo-1595225476474-87563907a212?auto=format&fit=crop&w=800&q=80" alt="Ảnh chính Bàn phím 1">
+                        <img class="gallery-img img2" src="https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=800&q=80" alt="Ảnh chính Bàn phím 2">
+                        <img class="gallery-img img3" src="https://images.unsplash.com/photo-1595225476474-87563907a212?auto=format&fit=crop&w=800&q=80" alt="Ảnh chính Bàn phím 3">
+                    </div>
+                    <div class="thumbnail-list">
+                        <label for="keychron-img1"><img src="https://images.unsplash.com/photo-1595225476474-87563907a212?auto=format&fit=crop&w=200&q=80" class="thumb" alt="Thumb 1"></label>
+                        <label for="keychron-img2"><img src="https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=200&q=80" class="thumb" alt="Thumb 2"></label>
+                        <label for="keychron-img3"><img src="https://images.unsplash.com/photo-1595225476474-87563907a212?auto=format&fit=crop&w=200&q=80" class="thumb" alt="Thumb 3"></label>
+                    </div>
+                </div>
+                <div class="product-info-detail">
+                    <h2 class="product-title-large">Bàn phím cơ không dây Keychron K2 V2</h2>
+                    <div class="product-price-large">950.000 đ</div>
+                    <div class="seller-info">
+                        <img src="https://imgcdn.stablediffusionweb.com/2024/11/1/b51f49a9-82a1-4659-905d-c8cd8643bade.jpg" alt="Avatar" class="seller-avatar">
+                        <div class="seller-details">
+                            <div class="seller-name">Lê Văn C </div>
+                            <div class="seller-rating"><i class="fas fa-star"></i> 4.5 (8 đánh giá) - Hoạt động 30 phút trước</div>
+                        </div>
+                    </div>
+                    <div class="product-specs">
+                        <ul>
+                            <li><strong>Tình trạng:</strong> Xước xát nhẹ, mất 2 keycap</li>
+                            <li><strong>Bảo hành:</strong> Không</li>
+                            <li><strong>Khu vực:</strong> Quận Hải Châu, Đà Nẵng</li>
+                        </ul>
+                    </div>
+                    <div class="action-buttons">
+                        <button class="btn-primary-large"><i class="fas fa-comments"></i> Chat với người bán</button>
+                        <button class="btn-secondary-large"><i class="fas fa-heart"></i> Lưu tin</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-description-full">
+                <h3>Mô tả chi tiết</h3>
+                <p>Mình dư dùng nên pass lại bàn phím cơ Keychron K2 V2 (bản nhựa, LED trắng, Brown switch).</p>
+                <p>
+                    - Bàn phím vẫn gõ ngon lành, kết nối Bluetooth hay cáp Type-C đều ổn định.<br>
+                    - Nhược điểm: Bị mất 2 keycap (phím ESC và phím mũi tên lên) nên mình đã thay bằng keycap của bộ khác (màu cam như ảnh). Vỏ ngoài hơi trầy xước nhẹ do hay bỏ balo mang đi cafe.<br>
+                    - Pin còn trâu, dùng liên tục được vài tuần chưa hết.
+                </p>
+                <p>Chỉ có bàn phím và cáp sạc. Giá rẻ cho anh em nào cần chữa cháy hoặc mới tập chơi phím cơ.</p>
+            </div>
+        </div>
+
+        <!-- SẢN PHẨM 4: SONY A6000 -->
+        <div id="sony" class="product-view">
+            <div class="breadcrumb">
+                <a href="sanpham.html">Danh mục sản phẩm</a> > <span>Máy ảnh Mirrorless Sony A6000</span>
+            </div>
+            <div class="product-detail-layout">
+                <div class="product-gallery">
+                    <!-- CSS-only Radio Buttons -->
+                    <input type="radio" name="sony-gallery" id="sony-img1" class="gallery-radio" checked>
+                    <input type="radio" name="sony-gallery" id="sony-img2" class="gallery-radio">
+                    <input type="radio" name="sony-gallery" id="sony-img3" class="gallery-radio">
+
+                    <div class="main-image">
+                        <span class="badge badge-like-new" style="box-shadow: none; z-index: 3;">Like New</span>
+                        <img class="gallery-img img1" src="https://images.unsplash.com/photo-1516724562728-afc824a36e84?auto=format&fit=crop&w=800&q=80" alt="Ảnh chính Sony A6000 1">
+                        <img class="gallery-img img2" src="https://images.unsplash.com/photo-1516724562728-afc824a36e84?auto=format&fit=crop&w=800&q=80" alt="Ảnh chính Sony A6000 2">
+                        <img class="gallery-img img3" src="https://images.unsplash.com/photo-1581591524425-c7e0978865fc?auto=format&fit=crop&w=800&q=80" alt="Ảnh chính Sony A6000 3">
+                    </div>
+                    <div class="thumbnail-list">
+                        <label for="sony-img1"><img src="https://images.unsplash.com/photo-1516724562728-afc824a36e84?auto=format&fit=crop&w=200&q=80" class="thumb" alt="Thumb 1"></label>
+                        <label for="sony-img2"><img src="https://images.unsplash.com/photo-1516724562728-afc824a36e84?auto=format&fit=crop&w=200&q=80" class="thumb" alt="Thumb 2"></label>
+                        <label for="sony-img3"><img src="https://images.unsplash.com/photo-1581591524425-c7e0978865fc?auto=format&fit=crop&w=200&q=80" class="thumb" alt="Thumb 3"></label>
+                    </div>
+                </div>
+                <div class="product-info-detail">
+                    <h2 class="product-title-large">Máy ảnh Mirrorless Sony A6000 + Kit</h2>
+                    <div class="product-price-large">7.800.000 đ</div>
+                    <div class="seller-info">
+                        <img src="https://imgcdn.stablediffusionweb.com/2024/11/1/b51f49a9-82a1-4659-905d-c8cd8643bade.jpg" alt="Avatar" class="seller-avatar">
+                        <div class="seller-details">
+                            <div class="seller-name">Phạm D <i class="fas fa-check-circle" style="color: #10b981; font-size: 0.9rem;"></i></div>
+                            <div class="seller-rating"><i class="fas fa-star"></i> 4.9 (35 đánh giá) - Hoạt động 10 phút trước</div>
+                        </div>
+                    </div>
+                    <div class="product-specs">
+                        <ul>
+                            <li><strong>Tình trạng:</strong> Chụp dưới 5k shot, hoạt động tốt</li>
+                            <li><strong>Bảo hành:</strong> Bao test 3 ngày</li>
+                            <li><strong>Khu vực:</strong> Quận Đống Đa, Hà Nội</li>
+                        </ul>
+                    </div>
+                    <div class="action-buttons">
+                        <button class="btn-primary-large"><i class="fas fa-comments"></i> Chat với người bán</button>
+                        <button class="btn-secondary-large"><i class="fas fa-heart"></i> Lưu tin</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-description-full">
+                <h3>Mô tả chi tiết</h3>
+                <p>Giải nghệ nên cần bán lại máy ảnh Sony A6000 kèm ống kính Kit 16-50mm.</p>
+                <p>
+                    - Ngoại hình cực mới do ít xài, chủ yếu cất tủ chống ẩm.<br>
+                    - Số shot: chưa tới 5k shot.<br>
+                    - Cảm biến sạch sẽ, lens trong vắt không mốc rễ hay rễ tre.<br>
+                    - Phụ kiện bao gồm: Máy, lens kit, pin, sạc đôi, thẻ nhớ 32GB, dây đeo zin, tặng kèm túi máy ảnh.
+                </p>
+                <p>Phù hợp cho các bạn mới tập chụp ảnh hoặc cần một chiếc máy nhỏ gọn mang đi du lịch. Fix xăng xe cho các bạn ở xa qua xem.</p>
+            </div>
+        </div>
+
+    </main>
+</body>
+</html>
+
+
+
+
+
+

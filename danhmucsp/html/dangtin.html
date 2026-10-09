@@ -1,0 +1,124 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng tin - Semper</title>
+    <!-- CSS chung -->
+    <link rel="stylesheet" href="../css/sanpham.css">
+    <!-- CSS riêng cho trang đăng tin -->
+    <link rel="stylesheet" href="../css/dangtin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <input type="checkbox" id="mobile-menu-toggle" style="display:none;">
+    <input type="checkbox" id="theme-toggle-checkbox" style="display:none;">
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="trangchusantraodoi.html" aria-label="Semper - về trang chủ">
+          <span class="brand-mark" aria-hidden="true">S</span>
+          <span>Semper<span class="brand-period">.</span></span>
+        </a>
+
+        <nav class="desktop-nav" aria-label="Điều hướng chính">
+          <a class="nav-link" href="trangchusantraodoi.html">Trang chủ</a>
+          <a class="nav-link" href="sanpham.html">Danh mục sản phẩm</a>
+        </nav>
+
+        <div class="header-actions">
+          <label for="mobile-menu-toggle" class="icon-button hamburger-menu"><div class="hamburger-lines"><span class="line line1"></span><span class="line line2"></span><span class="line line3"></span></div></label>
+          <a class="sell-link" href="dangtin.html" style="color: #267966;">Đăng tin</a>
+          <label for="theme-toggle-checkbox" class="icon-button theme-toggle-label" aria-label="Chuyển chế độ giao diện">
+            <svg class="sun-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="4"></circle>
+              <path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"></path>
+            </svg>
+            <svg class="moon-icon" viewBox="0 0 24 24" aria-hidden="true" style="display:none;">
+              <path d="M20.9 13A8.5 8.5 0 0 1 11 3.1 8.5 8.5 0 1 0 20.9 13Z"></path>
+            </svg>
+          </label>
+          <button class="icon-button notification-button" type="button" aria-label="Thông báo">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M15 17h5l-1.4-1.4a3 3 0 0 1-.6-1.8V11a8 8 0 1 0-16 0v2.8a3 3 0 0 1-.6 1.8L1 17h5m9 0a4 4 0 0 1-8 0m8 0H5"></path>
+            </svg>
+            <span class="notification-dot"></span>
+          </button>
+          <button class="avatar-button" type="button" aria-label="Tài khoản người dùng">Q</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="page-container post-page">
+        <div class="post-card">
+            <div class="post-header">
+                <h2>Đăng tin trao đổi</h2>
+                <p>Chia sẻ món đồ bạn không còn sử dụng với cộng đồng</p>
+            </div>
+            
+            <!-- FORM ĐĂNG TIN -->
+            <form action="#" class="post-form">
+                <!-- Tiêu đề -->
+                <div class="form-group">
+                    <label for="post-title">Tiêu đề tin <span class="required">*</span></label>
+                    <input type="text" id="post-title" class="form-control" placeholder="Ví dụ: Bàn phím cơ Keychron K2, Điện thoại cũ..." required>
+                </div>
+
+                <!-- Hình thức -->
+                <div class="form-group">
+                    <label>Loại hình trao đổi <span class="required">*</span></label>
+                    <div class="exchange-types">
+                        <label class="type-card">
+                            <input type="radio" name="exchange_type" value="donate" checked>
+                            <span class="type-content">
+                                <i class="fas fa-gift"></i>
+                                <span>Tặng miễn phí</span>
+                            </span>
+                        </label>
+                        <label class="type-card">
+                            <input type="radio" name="exchange_type" value="sell">
+                            <span class="type-content">
+                                <i class="fas fa-money-bill-wave"></i>
+                                <span>Bán</span>
+                            </span>
+                        </label>
+                        <label class="type-card">
+                            <input type="radio" name="exchange_type" value="trade">
+                            <span class="type-content">
+                                <i class="fas fa-exchange-alt"></i>
+                                <span>Trao đổi đồ</span>
+                            </span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Mô tả -->
+                <div class="form-group">
+                    <label for="post-desc">Mô tả chi tiết <span class="required">*</span></label>
+                    <textarea id="post-desc" class="form-control" rows="5" placeholder="Mô tả tình trạng, thời gian sử dụng, lý do trao đổi..." required></textarea>
+                </div>
+
+                <!-- Tải ảnh -->
+                <div class="form-group">
+                    <label>Hình ảnh sản phẩm (Tối đa 5 ảnh)</label>
+                    <div class="upload-area">
+                        <input type="file" id="post-images" class="file-input" multiple accept="image/*">
+                        <label for="post-images" class="upload-label">
+                            <i class="fas fa-cloud-upload-alt upload-icon"></i>
+                            <span class="upload-text">Nhấn để chọn ảnh hoặc kéo thả vào đây</span>
+                            <span class="upload-hint">Định dạng hỗ trợ: JPG, PNG, WEBP</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Nút Submit -->
+                <div class="form-actions">
+                    <button type="button" class="btn-cancel" onclick="history.back()">Hủy</button>
+                    <button type="submit" class="btn-submit" onclick="this.innerHTML='<span class=\'spinner\' style=\'border-color: rgba(255,255,255,0.3); border-top-color: #fff; margin-right: 8px; width: 16px; height: 16px; border-width: 2px;\'></span> Đang đăng tin...'; this.style.pointerEvents='none'; event.preventDefault();">Đăng tin ngay</button>
+                </div>
+            </form>
+        </div>
+    </main>
+</body>
+</html>
+
