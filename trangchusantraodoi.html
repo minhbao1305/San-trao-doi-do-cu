@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Semper — sàn trao đổi đồ cũ đáng tin cậy, nơi món đồ tốt tìm được chủ nhân mới."
+    />
+    <title>Semper — Trao đồ cũ, nhận niềm vui mới</title>
+    <link rel="icon" type="image/png" href="data:image/png;base64,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" />
+    <link rel="stylesheet" href="./styles.css" />
+    <script defer>
+const searchForm = document.querySelector("#search-form");
+const searchInput = document.querySelector("#product-search");
+const locationSelect = document.querySelector("#location-select");
+const categoryButtons = [...document.querySelectorAll(".category-card")];
+const productCards = [...document.querySelectorAll(".product-card")];
+const emptyState = document.querySelector("#empty-state");
+const themeToggle = document.querySelector("#theme-toggle");
+
+let activeCategory = "all";
+
+function applyTheme(theme) {
+  const isDark = theme === "dark";
+  document.documentElement.classList.toggle("dark-theme", isDark);
+  document.documentElement.dataset.theme = theme;
+  themeToggle.setAttribute("aria-pressed", String(isDark));
+  themeToggle.setAttribute(
+    "aria-label",
+    isDark ? "Chuyển sang giao diện sáng" : "Chuyển sang giao diện tối",
+  );
+  themeToggle.title = isDark ? "Chuyển sang giao diện sáng" : "Chuyển sang giao diện tối";
+}
+
+const savedTheme = localStorage.getItem("semper-theme");
+const initialTheme =
+  savedTheme === "light" || savedTheme === "dark"
+    ? savedTheme
+    : window.matchMedia("(prefers-color-scheme: dark)").matches
+      ? "dark"
+      : "light";
+
+applyTheme(initialTheme);
+
+themeToggle.addEventListener("click", () => {
+  const nextTheme = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+  applyTheme(nextTheme);
+  localStorage.setItem("semper-theme", nextTheme);
+});
+
+function filterProducts() {
+  const query = searchInput.value.trim().toLocaleLowerCase("vi");
+  const location = locationSelect.value;
+  let visibleCount = 0;
+
+  productCards.forEach((card) => {
+    const matchesCategory = activeCategory === "all" || card.dataset.category === activeCategory;
+    const matchesLocation = !location || card.dataset.location === location;
+    const matchesQuery = !query || card.textContent.toLocaleLowerCase("vi").includes(query);
+    const isVisible = matchesCategory && matchesLocation && matchesQuery;
+
+    card.hidden = !isVisible;
+    if (isVisible) visibleCount += 1;
+  });
+
+  emptyState.hidden = visibleCount > 0;
+}
+
+searchForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+  filterProducts();
+});
+
+searchInput.addEventListener("input", filterProducts);
+locationSelect.addEventListener("change", filterProducts);
+
+categoryButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    activeCategory = button.dataset.category;
+    categoryButtons.forEach((categoryButton) => {
+      const isSelected = categoryButton === button;
+      categoryButton.classList.toggle("selected", isSelected);
+      categoryButton.setAttribute("aria-pressed", String(isSelected));
+    });
+    filterProducts();
+  });
+});
+
+document.querySelectorAll(".favorite-button").forEach((button) => {
+  button.addEventListener("click", () => {
+    const isFavorite = button.getAttribute("aria-pressed") === "true";
+    button.setAttribute("aria-pressed", String(!isFavorite));
+    button.textContent = isFavorite ? "♡" : "♥";
+  });
+});
+
+    </script>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="#trang-chu" aria-label="Semper — về trang chủ">
+          <span class="brand-mark" aria-hidden="true">S</span>
+          <span>Semper<span class="brand-period">.</span></span>
+        </a>
+
+        <nav class="desktop-nav" aria-label="Điều hướng chính">
+          <a class="nav-link active" href="#trang-chu">Trang chủ</a>
+          <a class="nav-link" href="#san-pham">Khám phá</a>
+          <a class="nav-link" href="#cach-hoat-dong">Cách hoạt động</a>
+        </nav>
+
+        <div class="header-actions">
+          <a class="sell-link" href="#dang-tin">Đăng tin miễn phí</a>
+          <button class="icon-button theme-toggle" id="theme-toggle" type="button" aria-label="Chuyển sang giao diện tối" title="Chuyển sang giao diện tối">
+            <svg class="sun-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="4"></circle>
+              <path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"></path>
+            </svg>
+            <svg class="moon-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M20.9 13A8.5 8.5 0 0 1 11 3.1 8.5 8.5 0 1 0 20.9 13Z"></path>
+            </svg>
+          </button>
+          <button class="icon-button notification-button" type="button" aria-label="Thông báo">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4" />
+            </svg>
+            <span class="notification-dot" aria-hidden="true"></span>
+          </button>
+          <button class="avatar-button" type="button" aria-label="Tài khoản của bạn">L</button>
+        </div>
+      </div>
+    </header>
+
+    <div class="page-layout">
+      <aside class="page-sidebar" aria-labelledby="category-title">
+        <div class="sidebar-heading">
+          <p class="eyebrow">TÌM THEO SỞ THÍCH</p>
+          <h2 id="category-title">Danh mục</h2>
+        </div>
+        <nav class="category-list" aria-label="Danh mục sản phẩm">
+          <button class="category-card selected" type="button" data-category="all" aria-pressed="true">
+            <span class="category-icon category-all" aria-hidden="true">✳</span>
+            <span>Tất cả</span>
+          </button>
+          <button class="category-card" type="button" data-category="Thời trang" aria-pressed="false">
+            <span class="category-icon category-fashion" aria-hidden="true">◌</span>
+            <span>Thời trang</span>
+          </button>
+          <button class="category-card" type="button" data-category="Đồ gia dụng" aria-pressed="false">
+            <span class="category-icon category-home" aria-hidden="true">⌂</span>
+            <span>Đồ gia dụng</span>
+          </button>
+          <button class="category-card" type="button" data-category="Điện tử" aria-pressed="false">
+            <span class="category-icon category-tech" aria-hidden="true">▣</span>
+            <span>Điện tử</span>
+          </button>
+          <button class="category-card" type="button" data-category="Sách &amp; giải trí" aria-pressed="false">
+            <span class="category-icon category-books" aria-hidden="true">▤</span>
+            <span>Sách &amp; giải trí</span>
+          </button>
+          <button class="category-card" type="button" data-category="Thể thao" aria-pressed="false">
+            <span class="category-icon category-sport" aria-hidden="true">◎</span>
+            <span>Thể thao</span>
+          </button>
+        </nav>
+        <div class="sidebar-promo">
+          <span class="promo-icon" aria-hidden="true">↗</span>
+          <p><strong>Món đồ tốt vẫn còn giá trị.</strong> Đăng tin miễn phí, tìm chủ mới ngay hôm nay.</p>
+          <a href="#dang-tin">Bắt đầu đăng tin <span aria-hidden="true">→</span></a>
+        </div>
+      </aside>
+
+      <main id="trang-chu">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow"><span></span> SỐNG XANH, SỐNG CÓ GU</p>
+          <h1 id="hero-title">Món đồ cũ.<br />Một <em>hành trình</em> mới.</h1>
+          <p class="hero-description">
+            Trao đi món đồ bạn không còn cần. Tìm thấy món đồ bạn đang mong.
+            Mỗi lựa chọn nhỏ, thêm một vòng đời ý nghĩa.
+          </p>
+          <a class="button button-dark" href="#san-pham">
+            Khám phá ngay
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" /></svg>
+          </a>
+          <div class="community-proof">
+            <div class="avatar-stack" aria-hidden="true">
+              <span>H</span><span>M</span><span>A</span><span>+</span>
+            </div>
+            <p><strong>12.000+</strong> người đang trao đổi mỗi ngày</p>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <img
+            src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1200&q=85"
+            alt="Quần áo được sắp xếp gọn gàng trong một cửa hàng đồ cũ"
+          />
+          <div class="hero-note">
+            <span class="note-icon" aria-hidden="true">↗</span>
+            <span><strong>Đẹp như mới</strong><small>Đồ tốt, giá thật vui</small></span>
+          </div>
+          <div class="hero-index" aria-hidden="true">01 <span>/ 03</span></div>
+          <span class="hero-sparkle sparkle-one" aria-hidden="true">✳</span>
+          <span class="hero-sparkle sparkle-two" aria-hidden="true">✳</span>
+        </div>
+      </section>
+
+      <section class="search-section" aria-label="Tìm kiếm sản phẩm">
+        <form class="search-bar" id="search-form" role="search">
+          <label class="search-field">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="11" cy="11" r="7"></circle><path d="m16 16 4 4"></path>
+            </svg>
+            <span class="visually-hidden">Tìm món đồ bạn cần</span>
+            <input id="product-search" type="search" placeholder="Bạn đang tìm món gì?" />
+          </label>
+          <span class="search-divider" aria-hidden="true"></span>
+          <label class="location-field">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"></path>
+              <circle cx="12" cy="10" r="2.5"></circle>
+            </svg>
+            <span class="visually-hidden">Khu vực</span>
+            <select id="location-select" aria-label="Chọn khu vực">
+              <option value="">Toàn quốc</option>
+              <option value="Hồ Chí Minh">Hồ Chí Minh</option>
+              <option value="Hà Nội">Hà Nội</option>
+              <option value="Đà Nẵng">Đà Nẵng</option>
+            </select>
+          </label>
+          <button class="button button-green search-submit" type="submit">Tìm kiếm</button>
+        </form>
+      </section>
+
+      <section class="products-section" id="san-pham" aria-labelledby="products-title">
+        <div class="section-heading products-heading">
+          <div>
+            <p class="eyebrow">MÓN HỜI ĐANG ĐƯỢC YÊU THÍCH</p>
+            <h2 id="products-title">Có thể bạn sẽ thích <span>✳</span></h2>
+          </div>
+          <a class="text-link" href="#san-pham">Xem tất cả <span aria-hidden="true">→</span></a>
+        </div>
+
+        <div class="product-grid" id="product-grid">
+          <article class="product-card" data-category="Thời trang" data-location="Hồ Chí Minh">
+            <div class="product-image">
+              <img src="https://images.unsplash.com/photo-1543076447-215ad9ba6923?auto=format&fit=crop&w=700&q=80" alt="Áo khoác denim màu xanh" loading="lazy" />
+              <span class="condition-badge">Còn rất tốt</span>
+            </div>
+            <button class="favorite-button" type="button" aria-label="Lưu Áo khoác denim vintage" aria-pressed="false">♡</button>
+            <div class="product-info">
+              <p class="product-category">THỜI TRANG</p>
+              <h3>Áo khoác denim vintage</h3>
+              <p class="product-meta">Hồ Chí Minh <span>·</span> 2 giờ trước</p>
+              <div class="product-bottom"><strong>250.000đ</strong><span class="seller-avatar">N</span></div>
+            </div>
+          </article>
+
+          <article class="product-card" data-category="Đồ gia dụng" data-location="Hà Nội">
+            <div class="product-image">
+              <img src="https://images.unsplash.com/photo-1578500494198-246f612d3b3d?auto=format&fit=crop&w=700&q=80" alt="Bình gốm thủ công màu trắng đặt trên bàn" loading="lazy" />
+              <span class="condition-badge">Như mới</span>
+            </div>
+            <button class="favorite-button" type="button" aria-label="Lưu Bình gốm thủ công" aria-pressed="false">♡</button>
+            <div class="product-info">
+              <p class="product-category">ĐỒ GIA DỤNG</p>
+              <h3>Bình gốm thủ công</h3>
+              <p class="product-meta">Hà Nội <span>·</span> 5 giờ trước</p>
+              <div class="product-bottom"><strong>180.000đ</strong><span class="seller-avatar avatar-peach">T</span></div>
+            </div>
+          </article>
+
+          <article class="product-card" data-category="Điện tử" data-location="Hồ Chí Minh">
+            <div class="product-image">
+              <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=700&q=80" alt="Tai nghe chụp tai màu đen" loading="lazy" />
+              <span class="condition-badge">Còn rất tốt</span>
+            </div>
+            <button class="favorite-button" type="button" aria-label="Lưu Tai nghe chụp tai Sony" aria-pressed="false">♡</button>
+            <div class="product-info">
+              <p class="product-category">ĐIỆN TỬ</p>
+              <h3>Tai nghe chụp tai Sony</h3>
+              <p class="product-meta">Hồ Chí Minh <span>·</span> 1 ngày trước</p>
+              <div class="product-bottom"><strong>890.000đ</strong><span class="seller-avatar avatar-lilac">P</span></div>
+            </div>
+          </article>
+
+          <article class="product-card" data-category="Thời trang" data-location="Đà Nẵng">
+            <div class="product-image">
+              <img src="https://images.unsplash.com/photo-1590874103328-eac38a683ce7?auto=format&fit=crop&w=700&q=80" alt="Túi xách thời trang màu nâu sáng" loading="lazy" />
+              <span class="condition-badge">Như mới</span>
+            </div>
+            <button class="favorite-button" type="button" aria-label="Lưu Túi cói đi biển" aria-pressed="false">♡</button>
+            <div class="product-info">
+              <p class="product-category">THỜI TRANG</p>
+              <h3>Túi cói đi biển</h3>
+              <p class="product-meta">Đà Nẵng <span>·</span> 1 ngày trước</p>
+              <div class="product-bottom"><strong>320.000đ</strong><span class="seller-avatar avatar-yellow">M</span></div>
+            </div>
+          </article>
+        </div>
+        <p class="empty-state" id="empty-state" hidden>Chưa tìm thấy món đồ phù hợp. Thử từ khóa hoặc danh mục khác nhé!</p>
+      </section>
+
+      <section class="how-section" id="cach-hoat-dong" aria-labelledby="how-title">
+        <div class="how-copy">
+          <p class="eyebrow">ĐƠN GIẢN HƠN BẠN NGHĨ</p>
+          <h2 id="how-title">Đồ tốt xứng đáng<br />có thêm một <em>vòng đời.</em></h2>
+          <p>Đăng món đồ bạn không còn dùng, kết nối với người cần và trao đổi thật dễ dàng.</p>
+          <a class="text-link" href="#dang-tin">Bắt đầu đăng tin <span aria-hidden="true">→</span></a>
+        </div>
+        <ol class="steps-list">
+          <li><span class="step-number">01</span><div><h3>Chụp ảnh &amp; đăng tin</h3><p>Mô tả món đồ và mức giá bạn mong muốn.</p></div></li>
+          <li><span class="step-number">02</span><div><h3>Kết nối người phù hợp</h3><p>Trò chuyện và thống nhất cách trao đổi.</p></div></li>
+          <li><span class="step-number">03</span><div><h3>Trao tay, vui cả đôi</h3><p>Món đồ có chủ mới, bạn có thêm niềm vui.</p></div></li>
+        </ol>
+      </section>
+
+      <section class="sell-banner" id="dang-tin" aria-labelledby="sell-title">
+        <div>
+          <p class="eyebrow">TỦ ĐỒ ĐANG CÓ MÓN HAY?</p>
+          <h2 id="sell-title">Để món đồ của bạn<br />tiếp tục được yêu thương.</h2>
+        </div>
+        <a class="button button-light" href="mailto:hello@semper.vn?subject=Đăng%20tin%20món%20đồ">
+          Đăng tin miễn phí <span aria-hidden="true">↗</span>
+        </a>
+        <span class="banner-flower" aria-hidden="true">✳</span>
+      </section>
+      </main>
+    </div>
+
+    <footer class="site-footer">
+      <a class="brand footer-brand" href="#trang-chu"><span class="brand-mark" aria-hidden="true">S</span><span>Semper<span class="brand-period">.</span></span></a>
+      <p>Món đồ cũ, hành trình mới. <span>© 2025 Semper</span></p>
+      <nav aria-label="Liên kết cuối trang"><a href="#cach-hoat-dong">Về chúng tôi</a><a href="mailto:hello@semper.vn">Liên hệ</a><a href="#san-pham">Điều khoản</a></nav>
+    </footer>
+  </body>
+</html>
