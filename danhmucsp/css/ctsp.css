@@ -1,4 +1,4 @@
-/* ==========================================================
+﻿/* ==========================================================
    CSS Riêng cho Trang Chi tiết Sản phẩm (ctsp.html)
    ========================================================== */
 
@@ -193,6 +193,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    text-align: center;
     gap: 10px;
     transition: all 0.2s;
     border: none;

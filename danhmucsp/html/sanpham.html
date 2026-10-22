@@ -8,6 +8,7 @@
     <!-- FontAwesome cho icon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <script src="../js/products.js"></script>
     <style>
         /* CSS-only mobile filter toggle */
         #mobile-filter-checkbox { display: none; }
@@ -20,13 +21,13 @@
     <input type="checkbox" id="theme-toggle-checkbox" style="display:none;">
     <header class="site-header">
       <div class="header-inner">
-        <a class="brand" href="trangchusantraodoi.html" aria-label="Semper — về trang chủ">
+        <a class="brand" href="../index.html" aria-label="Semper — về trang chủ">
           <span class="brand-mark" aria-hidden="true">S</span>
           <span>Semper<span class="brand-period">.</span></span>
         </a>
 
         <nav class="desktop-nav" aria-label="Điều hướng chính">
-          <a class="nav-link" href="trangchusantraodoi.html">Trang chủ</a>
+          <a class="nav-link" href="../index.html">Trang chủ</a>
           <a class="nav-link active" href="sanpham.html">Danh mục sản phẩm</a>
         </nav>
 
@@ -71,18 +72,20 @@
                 <div class="filter-content" id="filter-content">
                     <div class="filter-group">
                         <h3><i class="fas fa-search"></i> Tìm kiếm</h3>
-                        <input type="text" class="filter-input" placeholder="Nhập tên sản phẩm...">
+                        <input type="search" class="filter-input" id="product-search" placeholder="Nhập tên sản phẩm..." aria-label="Tìm kiếm sản phẩm">
                     </div>
 
-                    <div class="filter-group">
+                    <div class="filter-group" id="category-filter-group">
                         <h3><i class="fas fa-list"></i> Danh mục</h3>
-                        <label class="filter-checkbox"><input type="checkbox" checked> Tất cả</label>
-                        <label class="filter-checkbox"><input type="checkbox"> Điện thoại</label>
-                        <label class="filter-checkbox"><input type="checkbox"> Laptop & Mac</label>
-                        <label class="filter-checkbox"><input type="checkbox"> Phụ kiện</label>
+                        <label class="filter-checkbox"><input type="checkbox" value="all" checked> Tất cả</label>
+                        <label class="filter-checkbox"><input type="checkbox" value="Thời trang"> Thời trang</label>
+                        <label class="filter-checkbox"><input type="checkbox" value="Đồ gia dụng"> Đồ gia dụng</label>
+                        <label class="filter-checkbox"><input type="checkbox" value="Điện tử"> Điện tử</label>
+                        <label class="filter-checkbox"><input type="checkbox" value="Sách & giải trí"> Sách & giải trí</label>
+                        <label class="filter-checkbox"><input type="checkbox" value="Thể thao"> Thể thao</label>
                     </div>
 
-                    <div class="filter-group">
+                    <div class="filter-group" id="status-filter-group">
                         <h3><i class="fas fa-tags"></i> Tình trạng</h3>
                         <label class="filter-checkbox"><input type="checkbox" value="like-new"> <span class="badge badge-like-new" style="position:static; padding:3px 8px; font-size:0.7rem; box-shadow:none;">Like New</span></label>
                         <label class="filter-checkbox"><input type="checkbox" value="good"> <span class="badge badge-good" style="position:static; padding:3px 8px; font-size:0.7rem; box-shadow:none;">Good</span></label>
@@ -91,11 +94,11 @@
 
                     <div class="filter-group">
                         <h3><i class="fas fa-money-bill-wave"></i> Mức giá</h3>
-                        <label class="filter-checkbox"><input type="radio" name="price" checked> Tất cả mức giá</label>
-                        <label class="filter-checkbox"><input type="radio" name="price"> Dưới 2 triệu</label>
-                        <label class="filter-checkbox"><input type="radio" name="price"> 2 - 5 triệu</label>
-                        <label class="filter-checkbox"><input type="radio" name="price"> 5 - 10 triệu</label>
-                        <label class="filter-checkbox"><input type="radio" name="price"> Trên 10 triệu</label>
+                        <label class="filter-checkbox"><input type="radio" name="price" value="all" checked> Tất cả mức giá</label>
+                        <label class="filter-checkbox"><input type="radio" name="price" value="under-2"> Dưới 2 triệu</label>
+                        <label class="filter-checkbox"><input type="radio" name="price" value="2-5"> 2 - 5 triệu</label>
+                        <label class="filter-checkbox"><input type="radio" name="price" value="5-10"> 5 - 10 triệu</label>
+                        <label class="filter-checkbox"><input type="radio" name="price" value="over-10"> Trên 10 triệu</label>
                     </div>
 
                     <button class="btn-filter"><i class="fas fa-filter"></i> Áp dụng bộ lọc</button>
@@ -103,7 +106,7 @@
             </aside>
 
             <!-- Cột chứa lưới sản phẩm -->
-            <div class="product-grid">
+            <div class="product-grid" aria-live="polite">
             <!-- Sản phẩm 1 -->
             <div class="product-card">
                 <div class="product-image">
@@ -190,9 +193,101 @@
             </div>
         </div>
     </main>
+    <script>
+      (() => {
+        const products = Array.isArray(window.semperProducts) ? window.semperProducts : [];
+        const productGrid = document.querySelector(".product-grid");
+        const searchInput = document.querySelector("#product-search");
+        const applyButton = document.querySelector(".btn-filter");
+        const categoryInputs = [...document.querySelectorAll('#category-filter-group input[type="checkbox"]')];
+        const statusInputs = [...document.querySelectorAll('#status-filter-group input[type="checkbox"]')];
+        const priceInputs = [...document.querySelectorAll('input[name="price"]')];
+        const allCategoryInput = document.querySelector('input[type="checkbox"][value="all"]');
+        const badgeClass = { "Like New": "badge-like-new", Good: "badge-good", Fair: "badge-fair" };
+
+        const parsePrice = (price) => Number.parseInt(String(price).replace(/\D/g, ""), 10) || 0;
+
+        const isInPriceRange = (price, range) => {
+          const priceInMillions = price / 1000000;
+          if (range === "under-2") return priceInMillions < 2;
+          if (range === "2-5") return priceInMillions >= 2 && priceInMillions <= 5;
+          if (range === "5-10") return priceInMillions > 5 && priceInMillions <= 10;
+          if (range === "over-10") return priceInMillions > 10;
+          return true;
+        };
+
+        const renderProduct = (product) => `
+          <article class="product-card" data-category="${product.category}" data-status="${product.status}">
+            <div class="product-image">
+              <span class="badge ${badgeClass[product.status] || ""}">${product.status}</span>
+              <img src="${product.images[0]}" alt="${product.title}" loading="lazy">
+            </div>
+            <div class="product-info">
+              <h3 class="product-title">${product.title}</h3>
+              <div class="product-price">${product.price}</div>
+              <p class="product-desc">${product.desc}</p>
+              <a href="ctsp.html#${product.id}" class="btn-add-cart"><i class="fas fa-cart-plus"></i> Xem chi tiết</a>
+            </div>
+          </article>
+        `;
+
+        const applyFilters = () => {
+          const keyword = searchInput.value.trim().toLocaleLowerCase("vi");
+          const selectedCategories = categoryInputs
+            .filter((input) => input.checked && input.value !== "all")
+            .map((input) => input.value);
+          const statusLabels = { "like-new": "Like New", good: "Good", fair: "Fair" };
+          const selectedStatuses = statusInputs
+            .filter((input) => input.checked)
+            .map((input) => statusLabels[input.value]);
+          const selectedPrice = priceInputs.find((input) => input.checked)?.value || "all";
+
+          const filteredProducts = products.filter((product) => {
+            const searchableText = `${product.title} ${product.desc} ${product.category}`.toLocaleLowerCase("vi");
+            const matchesKeyword = !keyword || searchableText.includes(keyword);
+            const matchesCategory = selectedCategories.length === 0 || selectedCategories.includes(product.category);
+            const matchesStatus = selectedStatuses.length === 0 || selectedStatuses.includes(product.status);
+            const matchesPrice = isInPriceRange(parsePrice(product.price), selectedPrice);
+            return matchesKeyword && matchesCategory && matchesStatus && matchesPrice;
+          });
+
+          productGrid.innerHTML = filteredProducts.length
+            ? filteredProducts.map(renderProduct).join("")
+            : '<p class="no-results"><i class="fas fa-box-open"></i> Không tìm thấy sản phẩm phù hợp.</p>';
+        };
+
+        allCategoryInput.addEventListener("change", () => {
+          if (allCategoryInput.checked) {
+            categoryInputs.filter((input) => input !== allCategoryInput).forEach((input) => { input.checked = false; });
+          }
+        });
+
+        categoryInputs.filter((input) => input !== allCategoryInput).forEach((input) => {
+          input.addEventListener("change", () => {
+            const anyCategorySelected = categoryInputs.some((categoryInput) => categoryInput !== allCategoryInput && categoryInput.checked);
+            allCategoryInput.checked = !anyCategorySelected;
+          });
+        });
+
+        applyButton.addEventListener("click", applyFilters);
+        applyFilters();
+      })();
+    </script>
+    <footer class="site-footer">
+      <div class="site-footer-inner">
+        <div class="footer-branding">
+          <a class="brand footer-brand" href="../index.html"><span class="brand-mark" aria-hidden="true">S</span><span>Semper<span class="brand-period">.</span></span></a>
+          <p class="footer-copyright">© 2026 Semper. All rights reserved.</p>
+        </div>
+        <div class="footer-contact">
+          <p class="footer-heading">Liên hệ</p>
+          <div class="contact-list">
+            <span class="contact-item"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 3.5 9 3l2 4.5-2 1.5a14.8 14.8 0 0 0 6 6l1.5-2L21 15l-.5 2.4a2.2 2.2 0 0 1-2.4 1.6A16.8 16.8 0 0 1 5 6.4 2.2 2.2 0 0 1 6.6 3.5Z"/></svg><span><strong>Điện thoại</strong>0123456789</span></span>
+            <a class="contact-item" href="mailto:hello@semper.vn"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg><span><strong>Email</strong>hello@semper.vn</span></a>
+            <span class="contact-item"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s6-5.2 6-11a6 6 0 1 0-12 0c0 5.8 6 11 6 11Z"/><circle cx="12" cy="10" r="2"/></svg><span><strong>Địa chỉ</strong>Đang cập nhật</span></span>
+          </div>
+        </div>
+      </div>
+    </footer>
 </body>
 </html>
-
-
-
-

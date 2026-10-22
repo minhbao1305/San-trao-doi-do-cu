@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="../css/ctsp.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <script src="../js/products.js"></script>
     <style>
         /* CSS-only tab switching for products */
         .product-view { display: none; }
@@ -26,13 +27,13 @@
     <input type="checkbox" id="theme-toggle-checkbox" style="display:none;">
     <header class="site-header">
       <div class="header-inner">
-        <a class="brand" href="trangchusantraodoi.html" aria-label="Semper — về trang chủ">
+        <a class="brand" href="../index.html" aria-label="Semper — về trang chủ">
           <span class="brand-mark" aria-hidden="true">S</span>
           <span>Semper<span class="brand-period">.</span></span>
         </a>
 
         <nav class="desktop-nav" aria-label="Điều hướng chính">
-          <a class="nav-link" href="trangchusantraodoi.html">Trang chủ</a>
+          <a class="nav-link" href="../index.html">Trang chủ</a>
           <a class="nav-link active" href="sanpham.html">Danh mục sản phẩm</a>
         </nav>
 
@@ -103,8 +104,8 @@
                         </ul>
                     </div>
                     <div class="action-buttons">
-                        <button class="btn-primary-large"><i class="fas fa-comments"></i> Chat với người bán</button>
-                        <button class="btn-secondary-large"><i class="fas fa-heart"></i> Lưu tin</button>
+                        <button class="btn-primary-large">Mua ngay</button>
+                        <button class="btn-secondary-large"><i class="fas fa-cart-plus"></i> Thêm vào giỏ hàng</button>
                     </div>
                 </div>
             </div>
@@ -163,8 +164,8 @@
                         </ul>
                     </div>
                     <div class="action-buttons">
-                        <button class="btn-primary-large"><i class="fas fa-comments"></i> Chat với người bán</button>
-                        <button class="btn-secondary-large"><i class="fas fa-heart"></i> Lưu tin</button>
+                        <button class="btn-primary-large">Mua ngay</button>
+                        <button class="btn-secondary-large"><i class="fas fa-cart-plus"></i> Thêm vào giỏ hàng</button>
                     </div>
                 </div>
             </div>
@@ -223,8 +224,8 @@
                         </ul>
                     </div>
                     <div class="action-buttons">
-                        <button class="btn-primary-large"><i class="fas fa-comments"></i> Chat với người bán</button>
-                        <button class="btn-secondary-large"><i class="fas fa-heart"></i> Lưu tin</button>
+                        <button class="btn-primary-large">Mua ngay</button>
+                        <button class="btn-secondary-large"><i class="fas fa-cart-plus"></i> Thêm vào giỏ hàng</button>
                     </div>
                 </div>
             </div>
@@ -282,8 +283,8 @@
                         </ul>
                     </div>
                     <div class="action-buttons">
-                        <button class="btn-primary-large"><i class="fas fa-comments"></i> Chat với người bán</button>
-                        <button class="btn-secondary-large"><i class="fas fa-heart"></i> Lưu tin</button>
+                        <button class="btn-primary-large">Mua ngay</button>
+                        <button class="btn-secondary-large"><i class="fas fa-cart-plus"></i> Thêm vào giỏ hàng</button>
                     </div>
                 </div>
             </div>
@@ -301,11 +302,87 @@
         </div>
 
     </main>
+    <script>
+      const detailMain = document.querySelector(".product-detail-main");
+      const badgeClass = { "Like New": "badge-like-new", Good: "badge-good", Fair: "badge-fair" };
+      detailMain.innerHTML = window.semperProducts.map((product) => `
+        <section id="${product.id}" class="product-view">
+          <div class="breadcrumb">
+            <a href="sanpham.html">Danh mục sản phẩm</a> &gt; <span>${product.title}</span>
+          </div>
+          <div class="product-detail-layout">
+            <div class="product-gallery">
+              <input type="radio" name="${product.id}-gallery" id="${product.id}-img1" class="gallery-radio" checked>
+              <input type="radio" name="${product.id}-gallery" id="${product.id}-img2" class="gallery-radio">
+              <input type="radio" name="${product.id}-gallery" id="${product.id}-img3" class="gallery-radio">
+              <div class="main-image">
+                <span class="badge ${badgeClass[product.status]}">${product.status}</span>
+                <img class="gallery-img img1" src="${product.images[0]}" alt="${product.title} - ảnh chính 1">
+                <img class="gallery-img img2" src="${product.images[1]}" alt="${product.title} - ảnh chính 2">
+                <img class="gallery-img img3" src="${product.images[2]}" alt="${product.title} - ảnh chính 3">
+              </div>
+              <div class="thumbnail-list">
+                ${product.images.map((image, index) => `<label for="${product.id}-img${index + 1}"><img src="${image}" class="thumb" alt="${product.title} - ảnh thumbnail ${index + 1}" loading="lazy"></label>`).join("")}
+              </div>
+            </div>
+            <div class="product-info-detail">
+              <h2 class="product-title-large">${product.title}</h2>
+              <div class="product-price-large">${product.price}</div>
+              <div class="seller-info">
+                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=120&q=80" alt="Ảnh người bán" class="seller-avatar">
+                <div class="seller-details">
+                  <div class="seller-name">Lê Minh Anh <i class="fas fa-check-circle" style="color:#10b981;font-size:.9rem"></i></div>
+                  <div class="seller-rating"><i class="fas fa-star"></i> 4.8 (12 đánh giá) - Hoạt động 2 giờ trước</div>
+                </div>
+              </div>
+              <div class="product-specs">
+                <ul>
+                  <li><strong>Danh mục:</strong> ${product.category}</li>
+                  <li><strong>Tình trạng:</strong> ${product.status}</li>
+                  <li><strong>Khu vực:</strong> Quận Cầu Giấy, Hà Nội</li>
+                </ul>
+              </div>
+              <div class="action-buttons">
+                <button class="btn-primary-large">Mua ngay</button>
+                <button class="btn-secondary-large"><i class="fas fa-cart-plus"></i> Thêm vào giỏ hàng</button>
+              </div>
+            </div>
+          </div>
+          <div class="product-description-full">
+            <h3>Mô tả chi tiết</h3>
+            <p>${product.desc}</p>
+            <p>Sản phẩm được kiểm tra trước khi đăng, hình ảnh là ảnh thực tế của món đồ. Người mua có thể nhắn tin để hỏi thêm thông tin hoặc hẹn xem trực tiếp.</p>
+            <p>Giao dịch minh bạch, ưu tiên trao đổi tại khu vực công cộng và kiểm tra sản phẩm trước khi nhận.</p>
+          </div>
+        </section>
+      `).join("");
+      const requestedProduct = window.location.hash.slice(1);
+      const firstProduct = detailMain.querySelector(".product-view");
+      if (!requestedProduct && firstProduct) firstProduct.style.display = "block";
+
+      // Cập nhật nội dung các nút hành động bằng JavaScript
+      document.querySelectorAll(".btn-primary-large").forEach((btn) => {
+        btn.textContent = 'Mua ngay';
+      });
+      document.querySelectorAll(".btn-secondary-large").forEach((btn) => {
+        btn.innerHTML = '<i class="fas fa-cart-plus"></i> Thêm vào giỏ hàng';
+      });
+    </script>
+    <footer class="site-footer">
+      <div class="site-footer-inner">
+        <div class="footer-branding">
+          <a class="brand footer-brand" href="../index.html"><span class="brand-mark" aria-hidden="true">S</span><span>Semper<span class="brand-period">.</span></span></a>
+          <p class="footer-copyright">© 2026 Semper. All rights reserved.</p>
+        </div>
+        <div class="footer-contact">
+          <p class="footer-heading">Liên hệ</p>
+          <div class="contact-list">
+            <span class="contact-item"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 3.5 9 3l2 4.5-2 1.5a14.8 14.8 0 0 0 6 6l1.5-2L21 15l-.5 2.4a2.2 2.2 0 0 1-2.4 1.6A16.8 16.8 0 0 1 5 6.4 2.2 2.2 0 0 1 6.6 3.5Z"/></svg><span><strong>Điện thoại</strong>0123456789</span></span>
+            <a class="contact-item" href="mailto:hello@semper.vn"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg><span><strong>Email</strong>hello@semper.vn</span></a>
+            <span class="contact-item"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s6-5.2 6-11a6 6 0 1 0-12 0c0 5.8 6 11 6 11Z"/><circle cx="12" cy="10" r="2"/></svg><span><strong>Địa chỉ</strong>Đang cập nhật</span></span>
+          </div>
+        </div>
+      </div>
+    </footer>
 </body>
 </html>
-
-
-
-
-
-
