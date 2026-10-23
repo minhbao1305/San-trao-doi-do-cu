@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Danh mục sản phẩm - Đồ cũ</title>
+    <script src="../js/theme.js"></script>
+    <script src="../js/account-menu.js"></script>
+    <script src="../js/notifications.js"></script>
     <link rel="stylesheet" href="../css/sanpham.css">
     <!-- FontAwesome cho icon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -21,13 +24,13 @@
     <input type="checkbox" id="theme-toggle-checkbox" style="display:none;">
     <header class="site-header">
       <div class="header-inner">
-        <a class="brand" href="../index.html" aria-label="Semper — về trang chủ">
+        <a class="brand" href="../../index.html" aria-label="Semper — về trang chủ">
           <span class="brand-mark" aria-hidden="true">S</span>
           <span>Semper<span class="brand-period">.</span></span>
         </a>
 
         <nav class="desktop-nav" aria-label="Điều hướng chính">
-          <a class="nav-link" href="../index.html">Trang chủ</a>
+          <a class="nav-link" href="../../index.html">Trang chủ</a>
           <a class="nav-link active" href="sanpham.html">Danh mục sản phẩm</a>
         </nav>
 
@@ -43,13 +46,36 @@
               <path d="M20.9 13A8.5 8.5 0 0 1 11 3.1 8.5 8.5 0 1 0 20.9 13Z"></path>
             </svg>
           </label>
-          <button class="icon-button notification-button" type="button" aria-label="Thông báo">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4" />
-            </svg>
-            <span class="notification-dot" aria-hidden="true"></span>
-          </button>
-          <button class="avatar-button" type="button" aria-label="Tài khoản của bạn">L</button>
+          <div class="notification-menu">
+            <button class="icon-button notification-button" type="button" aria-label="Mở thông báo" aria-expanded="false">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4" />
+              </svg>
+              <span class="notification-dot" aria-hidden="true"></span>
+            </button>
+            <div class="notification-popover" role="region" aria-label="Thông báo">
+              <div class="notification-heading"><strong>Thông báo</strong></div>
+              <div class="notification-list"></div>
+            </div>
+          </div>
+          <div class="account-menu">
+            <button class="avatar-button" type="button" aria-label="Mở biểu mẫu đăng nhập" aria-expanded="false">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="12" cy="12" r="10"></circle>
+                <circle cx="12" cy="8" r="3.2"></circle>
+                <path d="M5.5 19c.8-3.2 3.1-4.8 6.5-4.8s5.7 1.6 6.5 4.8"></path>
+              </svg>
+            </button>
+            <form class="login-popover" action="#" method="post">
+              <h2>Đăng nhập</h2>
+              <label for="products-login-account">Tài khoản</label>
+              <input id="products-login-account" name="account" type="text" autocomplete="username" required>
+              <label for="products-login-password">Mật khẩu</label>
+              <input id="products-login-password" name="password" type="password" autocomplete="current-password" required>
+              <button type="submit">Đăng nhập</button>
+              <a href="#">Đăng ký</a>
+            </form>
+          </div>
         </div>
       </div>
     </header>
@@ -199,11 +225,16 @@
         const productGrid = document.querySelector(".product-grid");
         const searchInput = document.querySelector("#product-search");
         const applyButton = document.querySelector(".btn-filter");
+        const mobileFilterCheckbox = document.querySelector("#mobile-filter-checkbox");
         const categoryInputs = [...document.querySelectorAll('#category-filter-group input[type="checkbox"]')];
         const statusInputs = [...document.querySelectorAll('#status-filter-group input[type="checkbox"]')];
         const priceInputs = [...document.querySelectorAll('input[name="price"]')];
         const allCategoryInput = document.querySelector('input[type="checkbox"][value="all"]');
         const badgeClass = { "Like New": "badge-like-new", Good: "badge-good", Fair: "badge-fair" };
+        const searchParams = new URLSearchParams(window.location.search);
+        const requestedCategory = searchParams.get("category");
+        const requestedKeyword = searchParams.get("q") || "";
+        const requestedLocation = searchParams.get("location") || "";
 
         const parsePrice = (price) => Number.parseInt(String(price).replace(/\D/g, ""), 10) || 0;
 
@@ -216,8 +247,13 @@
           return true;
         };
 
+        const getProductLocation = (product) => {
+          const productIndex = products.indexOf(product);
+          return ["Hồ Chí Minh", "Hà Nội", "Đà Nẵng"][productIndex % 3];
+        };
+
         const renderProduct = (product) => `
-          <article class="product-card" data-category="${product.category}" data-status="${product.status}">
+          <article class="product-card" data-category="${product.category}" data-status="${product.status}" data-location="${getProductLocation(product)}">
             <div class="product-image">
               <span class="badge ${badgeClass[product.status] || ""}">${product.status}</span>
               <img src="${product.images[0]}" alt="${product.title}" loading="lazy">
@@ -248,12 +284,15 @@
             const matchesCategory = selectedCategories.length === 0 || selectedCategories.includes(product.category);
             const matchesStatus = selectedStatuses.length === 0 || selectedStatuses.includes(product.status);
             const matchesPrice = isInPriceRange(parsePrice(product.price), selectedPrice);
-            return matchesKeyword && matchesCategory && matchesStatus && matchesPrice;
+            const matchesLocation = !requestedLocation || getProductLocation(product) === requestedLocation;
+            return matchesKeyword && matchesCategory && matchesStatus && matchesPrice && matchesLocation;
           });
 
           productGrid.innerHTML = filteredProducts.length
             ? filteredProducts.map(renderProduct).join("")
             : '<p class="no-results"><i class="fas fa-box-open"></i> Không tìm thấy sản phẩm phù hợp.</p>';
+
+          mobileFilterCheckbox.checked = false;
         };
 
         allCategoryInput.addEventListener("change", () => {
@@ -269,6 +308,15 @@
           });
         });
 
+        if (requestedCategory) {
+          const matchingCategory = categoryInputs.find((input) => input.value === requestedCategory);
+          if (matchingCategory) {
+            allCategoryInput.checked = false;
+            matchingCategory.checked = true;
+          }
+        }
+
+        searchInput.value = requestedKeyword;
         applyButton.addEventListener("click", applyFilters);
         applyFilters();
       })();
@@ -276,7 +324,7 @@
     <footer class="site-footer">
       <div class="site-footer-inner">
         <div class="footer-branding">
-          <a class="brand footer-brand" href="../index.html"><span class="brand-mark" aria-hidden="true">S</span><span>Semper<span class="brand-period">.</span></span></a>
+          <a class="brand footer-brand" href="../../index.html"><span class="brand-mark" aria-hidden="true">S</span><span>Semper<span class="brand-period">.</span></span></a>
           <p class="footer-copyright">© 2026 Semper. All rights reserved.</p>
         </div>
         <div class="footer-contact">
@@ -284,7 +332,7 @@
           <div class="contact-list">
             <span class="contact-item"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 3.5 9 3l2 4.5-2 1.5a14.8 14.8 0 0 0 6 6l1.5-2L21 15l-.5 2.4a2.2 2.2 0 0 1-2.4 1.6A16.8 16.8 0 0 1 5 6.4 2.2 2.2 0 0 1 6.6 3.5Z"/></svg><span><strong>Điện thoại</strong>0123456789</span></span>
             <a class="contact-item" href="mailto:hello@semper.vn"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg><span><strong>Email</strong>hello@semper.vn</span></a>
-            <span class="contact-item"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s6-5.2 6-11a6 6 0 1 0-12 0c0 5.8 6 11 6 11Z"/><circle cx="12" cy="10" r="2"/></svg><span><strong>Địa chỉ</strong>Đang cập nhật</span></span>
+            <span class="contact-item"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s6-5.2 6-11a6 6 0 1 0-12 0c0 5.8 6 11 6 11Z"/><circle cx="12" cy="10" r="2"/></svg><span><strong>Địa chỉ</strong>Thành phố Đồng Nai</span></span>
           </div>
         </div>
       </div>

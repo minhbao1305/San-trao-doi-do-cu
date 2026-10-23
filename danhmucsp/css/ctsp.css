@@ -1,4 +1,4 @@
-/* ==========================================================
+﻿/* ==========================================================
    CSS Riêng cho Trang Chi tiết Sản phẩm (ctsp.html)
    ========================================================== */
 
@@ -130,6 +130,52 @@
     transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
+.seller-details {
+    min-width: 0;
+}
+
+.seller-message-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex: 0 0 auto;
+    margin-left: auto;
+    padding: 10px 15px;
+    border: 1px solid var(--primary-color);
+    border-radius: 999px;
+    color: #163b33;
+    background: var(--primary-color);
+    font: 700 var(--fs-sm)/1 'DM Sans', sans-serif;
+    cursor: pointer;
+    box-shadow: 0 5px 14px rgba(82, 204, 176, 0.24);
+    transition: background-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+    animation: message-pulse 2.2s ease-in-out infinite;
+}
+
+.seller-message-button:hover {
+    background: var(--primary-hover);
+    box-shadow: 0 7px 18px rgba(82, 204, 176, 0.36);
+    animation-play-state: paused;
+    transform: translateY(-2px);
+}
+
+.seller-message-button:focus-visible {
+    outline: 3px solid color-mix(in srgb, var(--primary-color) 45%, transparent);
+    outline-offset: 3px;
+}
+
+@keyframes message-pulse {
+    0%, 100% {
+        box-shadow: 0 5px 14px rgba(82, 204, 176, 0.24);
+        transform: scale(1);
+    }
+    50% {
+        box-shadow: 0 7px 21px rgba(82, 204, 176, 0.48);
+        transform: scale(1.04);
+    }
+}
+
 .seller-avatar {
     width: 50px;
     height: 50px;
@@ -193,6 +239,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    text-align: center;
     gap: 10px;
     transition: all 0.2s;
     border: none;
@@ -261,6 +308,25 @@
     
     .action-buttons {
         flex-direction: column;
+    }
+
+    .seller-message-button {
+        padding: 9px 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .seller-info {
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .seller-message-button {
+        padding: 9px;
+    }
+
+    .seller-message-button span {
+        display: none;
     }
 }
 
