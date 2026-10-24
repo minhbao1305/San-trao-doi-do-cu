@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
@@ -7,10 +7,18 @@
     <script src="../js/theme.js"></script>
     <script src="../js/account-menu.js"></script>
     <script src="../js/notifications.js"></script>
+    <script src="../js/page-loader.js"></script>
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            AOS.init({ duration: 700, easing: "ease-out-cubic", once: true, offset: 70 });
+        });
+    </script>
     <!-- Tái sử dụng CSS chung -->
     <link rel="stylesheet" href="../css/sanpham.css">
     <!-- CSS riêng cho trang chi tiết -->
     <link rel="stylesheet" href="../css/ctsp.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
     <script src="../js/products.js"></script>
@@ -26,6 +34,9 @@
     </style>
 </head>
 <body>
+    <div class="page-loader" role="status" aria-label="Đang tải trang">
+        <span class="loading-spinner" aria-hidden="true"></span>
+    </div>
     <input type="checkbox" id="mobile-menu-toggle" style="display:none;">
     <input type="checkbox" id="theme-toggle-checkbox" style="display:none;">
     <header class="site-header">
@@ -86,7 +97,7 @@
       </div>
     </header>
 
-    <main class="container product-detail-main">
+    <main class="container product-detail-main" data-aos="fade-up">
 
         <!-- SẢN PHẨM 1: IPHONE 13 -->
         <div id="iphone" class="product-view">
@@ -399,7 +410,7 @@
         btn.innerHTML = '<i class="fas fa-cart-plus"></i> Thêm vào giỏ hàng';
       });
     </script>
-    <footer class="site-footer">
+    <footer class="site-footer" data-aos="fade-up">
       <div class="site-footer-inner">
         <div class="footer-branding">
           <a class="brand footer-brand" href="../../index.html"><span class="brand-mark" aria-hidden="true">S</span><span>Semper<span class="brand-period">.</span></span></a>

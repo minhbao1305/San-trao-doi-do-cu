@@ -7,14 +7,25 @@
     <script src="../js/theme.js"></script>
     <script src="../js/account-menu.js"></script>
     <script src="../js/notifications.js"></script>
+    <script src="../js/page-loader.js"></script>
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            AOS.init({ duration: 700, easing: "ease-out-cubic", once: true, offset: 70 });
+        });
+    </script>
     <!-- CSS chung -->
     <link rel="stylesheet" href="../css/sanpham.css">
     <!-- CSS riêng cho trang đăng tin -->
     <link rel="stylesheet" href="../css/dangtin.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
+    <div class="page-loader" role="status" aria-label="Đang tải trang">
+        <span class="loading-spinner" aria-hidden="true"></span>
+    </div>
     <input type="checkbox" id="mobile-menu-toggle" style="display:none;">
     <input type="checkbox" id="theme-toggle-checkbox" style="display:none;">
     <header class="site-header">
@@ -75,8 +86,8 @@
       </div>
     </header>
 
-    <main class="page-container post-page">
-        <div class="post-card">
+    <main class="page-container post-page" data-aos="fade-up">
+        <div class="post-card" data-aos="fade-up">
             <div class="post-header">
                 <h2>Đăng tin trao đổi</h2>
                 <p>Chia sẻ món đồ bạn không còn sử dụng với cộng đồng</p>
@@ -86,34 +97,74 @@
             <form action="#" class="post-form">
                 <!-- Tiêu đề -->
                 <div class="form-group">
-                    <label for="post-title">Tiêu đề tin <span class="required">*</span></label>
+                    <label for="post-title">Tên sản phẩm <span class="required">*</span></label>
                     <input type="text" id="post-title" class="form-control" placeholder="Ví dụ: Bàn phím cơ Keychron K2, Điện thoại cũ..." required>
                 </div>
 
-                <!-- Hình thức -->
+                <!-- Danh mục sản phẩm -->
                 <div class="form-group">
-                    <label>Loại hình trao đổi <span class="required">*</span></label>
-                    <div class="exchange-types">
-                        <label class="type-card">
-                            <input type="radio" name="exchange_type" value="donate" checked>
-                            <span class="type-content">
-                                <i class="fas fa-gift"></i>
-                                <span>Tặng miễn phí</span>
-                            </span>
+                    <label for="product-category">Danh mục sản phẩm <span class="required">*</span></label>
+                    <select id="product-category" name="category" class="form-control" required>
+                        <option value="" selected disabled>Chọn danh mục sản phẩm</option>
+                        <option value="fashion">Thời trang</option>
+                        <option value="home">Đồ gia dụng</option>
+                        <option value="electronics">Điện tử</option>
+                        <option value="books">Sách &amp; giải trí</option>
+                        <option value="sport">Thể thao</option>
+                    </select>
+                </div>
+
+                <!-- Giá bán -->
+                <div class="form-group">
+                    <label for="post-price">Giá bán <span class="required">*</span></label>
+                    <div class="input-with-suffix">
+                        <input type="number" id="post-price" name="price" class="form-control" min="10000" step="1000" placeholder="Nhập giá bán" required>
+                        <span>đ</span>
+                    </div>
+                </div>
+
+                <!-- Tình trạng -->
+                <div class="form-group">
+                    <label>Tình trạng sản phẩm <span class="required">*</span></label>
+                    <div class="status-options">
+                        <label class="status-option">
+                            <input type="radio" name="status" value="Like New" required>
+                            <span>Like New</span>
                         </label>
-                        <label class="type-card">
-                            <input type="radio" name="exchange_type" value="sell">
-                            <span class="type-content">
-                                <i class="fas fa-money-bill-wave"></i>
-                                <span>Bán</span>
-                            </span>
+                        <label class="status-option">
+                            <input type="radio" name="status" value="Good">
+                            <span>Good</span>
                         </label>
-                        <label class="type-card">
-                            <input type="radio" name="exchange_type" value="trade">
-                            <span class="type-content">
-                                <i class="fas fa-exchange-alt"></i>
-                                <span>Trao đổi đồ</span>
-                            </span>
+                        <label class="status-option">
+                            <input type="radio" name="status" value="Fair">
+                            <span>Fair</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Vận chuyển -->
+                <div class="form-group">
+                    <label for="pickup-address">Địa chỉ lấy hàng <span class="required">*</span></label>
+                    <div class="address-row">
+                        <select id="pickup-address" name="pickup_address" class="form-control" required>
+                            <option value="" selected disabled>Chọn địa chỉ lấy hàng</option>
+                            <option value="Địa chỉ mặc định">Địa chỉ mặc định</option>
+                        </select>
+                        <button type="button" class="add-address-button" id="add-address-button"><i class="fas fa-plus"></i> Thêm mới</button>
+                    </div>
+                    <input type="text" id="new-address" class="form-control new-address-input" placeholder="Nhập địa chỉ mới rồi chọn Thêm mới" hidden>
+                </div>
+
+                <div class="form-group">
+                    <label>Phí vận chuyển <span class="required">*</span></label>
+                    <div class="shipping-options">
+                        <label class="shipping-option">
+                            <input type="radio" name="shipping_fee" value="buyer" checked required>
+                            <span>Người mua trả</span>
+                        </label>
+                        <label class="shipping-option">
+                            <input type="radio" name="shipping_fee" value="seller">
+                            <span>Người bán trả</span>
                         </label>
                     </div>
                 </div>
@@ -121,14 +172,14 @@
                 <!-- Mô tả -->
                 <div class="form-group">
                     <label for="post-desc">Mô tả chi tiết <span class="required">*</span></label>
-                    <textarea id="post-desc" class="form-control" rows="5" placeholder="Mô tả tình trạng, thời gian sử dụng, lý do trao đổi..." required></textarea>
+                    <textarea id="post-desc" name="description" class="form-control" rows="5" placeholder="Mô tả tình trạng, thời gian sử dụng, lý do bán..." required></textarea>
                 </div>
 
                 <!-- Tải ảnh -->
                 <div class="form-group">
                     <label>Hình ảnh sản phẩm (Tối đa 5 ảnh)</label>
                     <div class="upload-area">
-                        <input type="file" id="post-images" class="file-input" multiple accept="image/*">
+                        <input type="file" id="post-images" name="images" class="file-input" multiple accept="image/*">
                         <label for="post-images" class="upload-label">
                             <i class="fas fa-cloud-upload-alt upload-icon"></i>
                             <span class="upload-text">Nhấn để chọn ảnh hoặc kéo thả vào đây</span>
@@ -145,7 +196,44 @@
             </form>
         </div>
     </main>
-    <footer class="site-footer">
+    <script>
+      (() => {
+        const priceInput = document.querySelector("#post-price");
+        const addAddressButton = document.querySelector("#add-address-button");
+        const newAddressInput = document.querySelector("#new-address");
+        const pickupAddress = document.querySelector("#pickup-address");
+
+        priceInput.addEventListener("input", () => {
+          if (priceInput.value && Number(priceInput.value) < 10000) {
+            priceInput.setCustomValidity("Giá bán tối thiểu là 10.000đ.");
+          } else {
+            priceInput.setCustomValidity("");
+          }
+        });
+
+        addAddressButton.addEventListener("click", () => {
+          if (newAddressInput.hidden) {
+            newAddressInput.hidden = false;
+            newAddressInput.required = true;
+            newAddressInput.focus();
+            return;
+          }
+
+          const address = newAddressInput.value.trim();
+          if (!address) {
+            newAddressInput.reportValidity();
+            return;
+          }
+
+          const option = new Option(address, address, true, true);
+          pickupAddress.add(option);
+          newAddressInput.value = "";
+          newAddressInput.required = false;
+          newAddressInput.hidden = true;
+        });
+      })();
+    </script>
+    <footer class="site-footer" data-aos="fade-up">
       <div class="site-footer-inner">
         <div class="footer-branding">
           <a class="brand footer-brand" href="../../index.html"><span class="brand-mark" aria-hidden="true">S</span><span>Semper<span class="brand-period">.</span></span></a>

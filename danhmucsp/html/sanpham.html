@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
@@ -7,7 +7,15 @@
     <script src="../js/theme.js"></script>
     <script src="../js/account-menu.js"></script>
     <script src="../js/notifications.js"></script>
+    <script src="../js/page-loader.js"></script>
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            AOS.init({ duration: 700, easing: "ease-out-cubic", once: true, offset: 70 });
+        });
+    </script>
     <link rel="stylesheet" href="../css/sanpham.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
     <!-- FontAwesome cho icon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -20,6 +28,9 @@
     </style>
 </head>
 <body>
+    <div class="page-loader" role="status" aria-label="Đang tải trang">
+        <span class="loading-spinner" aria-hidden="true"></span>
+    </div>
     <input type="checkbox" id="mobile-menu-toggle" style="display:none;">
     <input type="checkbox" id="theme-toggle-checkbox" style="display:none;">
     <header class="site-header">
@@ -80,7 +91,7 @@
       </div>
     </header>
 
-    <main class="main-content container">
+    <main class="main-content container" data-aos="fade-up">
         <div class="page-title">
             <h2>Danh sách sản phẩm</h2>
         </div>
@@ -253,7 +264,7 @@
         };
 
         const renderProduct = (product) => `
-          <article class="product-card" data-category="${product.category}" data-status="${product.status}" data-location="${getProductLocation(product)}">
+          <article class="product-card" data-aos="fade-up" data-category="${product.category}" data-status="${product.status}" data-location="${getProductLocation(product)}">
             <div class="product-image">
               <span class="badge ${badgeClass[product.status] || ""}">${product.status}</span>
               <img src="${product.images[0]}" alt="${product.title}" loading="lazy">
@@ -321,7 +332,7 @@
         applyFilters();
       })();
     </script>
-    <footer class="site-footer">
+    <footer class="site-footer" data-aos="fade-up">
       <div class="site-footer-inner">
         <div class="footer-branding">
           <a class="brand footer-brand" href="../../index.html"><span class="brand-mark" aria-hidden="true">S</span><span>Semper<span class="brand-period">.</span></span></a>

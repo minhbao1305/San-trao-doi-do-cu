@@ -79,58 +79,102 @@
     opacity: 0.7;
 }
 
-/* Chọn loại hình trao đổi */
-.exchange-types {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
-}
-
-.type-card {
-    cursor: pointer;
+/* Thông tin sản phẩm và vận chuyển */
+.input-with-suffix {
     position: relative;
 }
 
-.type-card input {
+.input-with-suffix .form-control {
+    padding-right: 38px;
+}
+
+.input-with-suffix > span {
     position: absolute;
-    opacity: 0;
+    top: 50%;
+    right: 16px;
+    color: var(--text-muted);
+    font-weight: 700;
+    pointer-events: none;
+    transform: translateY(-50%);
+}
+
+.status-options,
+.shipping-options {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+}
+
+.shipping-options {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.status-option,
+.shipping-option {
     cursor: pointer;
 }
 
-.type-content {
+.status-option input,
+.shipping-option input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.status-option span,
+.shipping-option span {
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 10px;
-    padding: 20px 10px;
-    border: 2px solid var(--border-color);
+    min-height: 48px;
+    padding: 10px;
+    border: 1px solid var(--border-color);
     border-radius: 10px;
     background-color: var(--bg-card);
-    transition: all 0.3s ease;
-    text-align: center;
     color: var(--text-muted);
-}
-
-.type-content i {
-    font-size: var(--fs-xl, 1.5rem);
-}
-
-.type-content span {
-    font-weight: 600;
     font-size: var(--fs-sm, 0.9rem);
+    font-weight: 600;
+    text-align: center;
+    transition: all 0.3s ease;
 }
 
-/* Khi radio được chọn */
-.type-card input:checked ~ .type-content {
+.status-option input:checked + span,
+.shipping-option input:checked + span {
     border-color: var(--primary-color);
     background-color: color-mix(in srgb, var(--primary-color) 10%, transparent);
     color: var(--primary-color);
     box-shadow: 0 4px 12px var(--shadow-color);
 }
 
-.type-card input:hover:not(:checked) ~ .type-content {
+.status-option span:hover,
+.shipping-option span:hover {
     border-color: color-mix(in srgb, var(--primary-color) 50%, var(--border-color));
+}
+
+.address-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 10px;
+}
+
+.add-address-button {
+    min-width: 108px;
+    border: 1px solid var(--primary-color);
+    border-radius: 8px;
+    color: var(--primary-color);
+    background: transparent;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.add-address-button:hover {
+    color: #163b33;
+    background: var(--primary-color);
+}
+
+.new-address-input {
+    margin-top: 10px;
 }
 
 /* Khu vực tải ảnh giả lập */
@@ -239,10 +283,19 @@
         padding-top: 0;
     }
 
-    .exchange-types {
+    .status-options,
+    .shipping-options {
         grid-template-columns: 1fr;
     }
-    
+
+    .address-row {
+        grid-template-columns: 1fr;
+    }
+
+    .add-address-button {
+        min-height: 46px;
+    }
+
     .form-actions {
         flex-direction: column-reverse;
     }
